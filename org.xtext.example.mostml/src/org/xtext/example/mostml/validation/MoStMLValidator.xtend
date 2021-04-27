@@ -110,14 +110,14 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 	@Check
 	def void checkSignalName(SIGNALCONDITION signalCondition){
 		if(signalCondition.getSignalName().charAt(0)>'Z'|| signalCondition.getSignalName().charAt(0)<'A'){
-			error("State name should start with a upper case"+": error '"+signalCondition.getSignalName().charAt(0)+"'",
+			error("Signal name should start with a upper case"+": error '"+signalCondition.getSignalName().charAt(0)+"'",
 					  MoStMLPackage.Literals.SIGNALCONDITION__SIGNAL_NAME,INVALID_ReqID);
 		}	
 	}
 	@Check
 	def void checkAttributeName(ATTRIBUTECONTION attributeCondition){
 		if(attributeCondition.getAttributeName().charAt(0)<='Z'&&attributeCondition.getAttributeName().charAt(0)>='A'){
-			error("State name should start with a lower case"+": error '"+attributeCondition.getAttributeName().charAt(0)+"'",
+			error("Attribute name should start with a lower case"+": error '"+attributeCondition.getAttributeName().charAt(0)+"'",
 					  MoStMLPackage.Literals.ATTRIBUTECONTION__ATTRIBUTE_NAME,INVALID_ReqID);
 		}	
 	}
@@ -187,7 +187,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		if(envir!==null){
 			if(envir.envirUnit.size>0){ // integer variable must have range declaration.
 				if(envirVariables.get(envir.envirVariable)==1){
-					error("Range should be given to environment variables "+"'"+envir.envirVariable+"'",
+					error("Scope should be given to environment variables "+"'"+envir.envirVariable+"'",
 					  MoStMLPackage.Literals.ENVIRONMENT__ENVIR_VARIABLE,INVALID_ReqID);
 				}
 			}
@@ -221,7 +221,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		}
 		if(stateReqs.containsKey(tempPreCondition)){
 			if(stateReqs.get(tempPreCondition).equals("repeat")){
-				error("You have written the same state conditions ",
+				error("You have written the same state requirements. ",
 					  MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
 			}
 			else if(stateReqs.get(tempPreCondition).equals("conflict")){
@@ -250,11 +250,11 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		}
 		if(modeReqs.containsKey(tempPreCondition)){
 			if(modeReqs.get(tempPreCondition).equals("repeat")){
-				error("You have written the same mode conditions ",
+				error("You have written the same mode requirements. ",
 					  MoStMLPackage.Literals.MODE__MODE_REQ_ID,INVALID_ReqID);
 			}
 			else if(modeReqs.get(tempPreCondition).equals("conflict")){
-				error("You have written different mode postconditions with the same preconditions ",
+				error("You have written different mode postconditions with the same preconditions. ",
 					  MoStMLPackage.Literals.MODE__MODE_REQ_ID,INVALID_ReqID);
 			}
 			else{
@@ -281,7 +281,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		attribute=constraintReq.postConstraintCondition.condition.split("=").get(0);
 		if(constraintReqs.containsKey(tempPreCondition)){
 			if(constraintReqs.get(tempPreCondition).equals("repeat")){
-				error("You have written the same constraint conditions ",
+				error("You have written the same constraint requirements. ",
 					  MoStMLPackage.Literals.CONSTRAINT__CONSTRAINT_REQ_ID,INVALID_ReqID);
 			}
 		}
@@ -313,7 +313,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		}
 		if(propertyReqs.containsKey(tempPreCondition+tempPostCondition)){
 			if(propertyReqs.get(tempPreCondition+tempPostCondition).equals("repeat")){
-				error("You have written the same property conditions ",
+				error("You have written the same property requirements. ",
 					  MoStMLPackage.Literals.PROPERTY__PROPERTY_REQ_ID,INVALID_ReqID);
 			}
 

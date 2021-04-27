@@ -87,9 +87,11 @@ class NuSMVTextGenerator {
 	  	  init(«constraintMap.key»):= «IF constraintMap.value.split("@").get(0)!==null»«constraintMap.value.split("@").get(0)»«ENDIF»
 	  	  next(«constraintMap.key»):=
 	  	    case
-	  	        «FOR condition: constraintMap.value.split("@").get(1).split("#")»
-	  	        «IF condition!==""»«condition»«ENDIF»
-	  	        «ENDFOR»
+    	    «IF constraintMap.value.contains("@")»
+		  	    «FOR condition: constraintMap.value.split("@").get(1).split("#")»
+		  	    «IF condition!==""»«condition»«ENDIF»
+		        «ENDFOR»
+	  	     «ENDIF»
 	  	        TRUE: «constraintMap.key»;
 	  	    esac;
 		«ENDFOR»
