@@ -1,0 +1,208 @@
+grammar org.xtext.example.mostml.MoStML with org.eclipse.xtext.common.Terminals
+
+generate moStML "http://www.xtext.org/example/mostml/MoStML"
+
+MoSt:
+	model+=(Requirement | NLRequirement )*
+;
+NLRequirement:
+	nlReqID=ReqID ID (ID)* '.';
+
+Requirement:
+	MODE | STATE | PROPERTY |  CONSTRAINT | Environment
+;
+
+Environment:
+	envirReqID=ReqID ID envirVariable=ID (ID)*  (('initialised' 'to' envirAttributeValue=ATTRIBUTEVALUE 
+	(envirUnit+=UNIT)*) | (range=RANG)) (ID)*'.'
+;
+
+MODE:
+	modeReqID=ReqID 'when' preModeConditions+=MODECONDITION (preRelations+=RELATION preModeConditions+=(STATECONDITON 
+	| ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))*  ',' 'then' postModeCondition = MODECONDITION '.'
+;
+
+STATE:
+	stateReqID=ReqID 'when' preStateConditions+=STATECONDITON (relations+=RELATION preStateConditions+=(STATECONDITON |
+	ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateConditions+=STATECONDITON* '.'
+;
+
+CONSTRAINT:
+	constraintReqID=ReqID 'when' preConstraintConditions+=(STATECONDITON | ATTRIBUTECONTION | MODECONDITION | 
+	SIGNALCONDITION)*  (relations+=RELATION preConstraintConditions+=(STATECONDITON | ATTRIBUTECONTION | MODECONDITION 
+	| SIGNALCONDITION))* ',' 'then' postConstraintCondition=(STATECONDITON | ATTRIBUTECONTION | MODECONDITION | ARITHMETICCONDITION)'.'
+;
+
+PROPERTY:
+	propertyReqID=ReqID 'when' preOperator= (CTLOperator | LTLOperator) prePropertyConditions+=(STATECONDITON |
+	ATTRIBUTECONTION | MODECONDITION)*  (preRelations+=RELATION prePropertyConditions+=(STATECONDITON |
+	ATTRIBUTECONTION | MODECONDITION))* ',' 'then' postOperator=(CTLOperator | LTLOperator) postPropertyConditions+=(STATECONDITON |
+	ATTRIBUTECONTION | MODECONDITION)*  (postRelations+=RELATION postPropertyConditions+=(STATECONDITON | ATTRIBUTECONTION | MODECONDITION))* '.'
+;
+
+RANG:
+	compOperator1=COMPARISONOPERATOR bound1=ATTRIBUTEVALUE compOperator2=COMPARISONOPERATOR bound2=ATTRIBUTEVALUE unit=UNIT
+;
+
+CTLOperator:
+	AG | AF | EF | EG | AX
+;
+
+AX:
+	ax='all' 'next'
+;
+
+EG:
+	eg='exist' 'globally'
+;
+
+EF:
+	ef='exist' 'future' 
+;
+
+AF:
+	af='all' 'future'   
+;
+
+AG:
+	ag='all' 'globally' 
+;
+	
+
+LTLOperator:
+	F | G | X
+;
+
+F:
+	f='future' 
+;
+
+G:
+	g='globally'
+;
+X:
+	x='next'
+;	
+	
+
+RELATION:
+	relaion=('and' | 'or')
+;
+
+
+
+SIGNALCONDITION:
+	ID (ID)* 'receives' signalName=ID ID
+;
+
+ReqID:
+	'[' reqID+=INT ('.'reqID+=INT)* ']'
+;
+
+ATTRIBUTECONTION:
+	ID (ID)* attributeName=ID ID operator=COMPARISONOPERATOR attributeValue=ATTRIBUTEVALUE (unit+=UNIT)*
+;
+
+UNIT:
+	SPEED | TIME | WEIGHT
+	
+;
+
+WEIGHT:
+	weight='kg'
+;
+
+TIME:
+	time='s'
+;
+
+SPEED:
+	speed='km/h'	
+;
+
+ATTRIBUTEVALUE:
+	INTTYPE | STRINGTYPE | BOOLEANTYPE
+;
+
+STRINGTYPE:
+	string=STRING
+;
+
+
+INTTYPE:
+	int=INT
+;
+
+
+BOOLEANTYPE:
+	value=('TRUE' | 'FALSE')
+;
+
+STATECONDITON:
+	((ID (ID)* 'state' stateName=ID) | ((ID)* compOperator=COMPARISONOPERATOR) (ID)* 'state' stateName=ID)
+;
+
+MODECONDITION:
+	ID (ID)* 'mode' modeName=ID
+;
+
+ARITHMETICCONDITION:
+	ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2=ID
+;
+
+ARITHMETICOPERATOR:
+	(ADD | SUBTRACTION | MULTIPLICATION | DIVISION | MODULE)
+;
+
+MODULE:
+	add='moduled' 'by'
+;
+
+DIVISION:
+	division='divided' 'by'
+;
+
+MULTIPLICATION:
+	multiplication='multiplied' 'by'
+;
+
+SUBTRACTION:
+	substraction='subtracted' 'by'
+;
+
+ADD:
+	add='added' 'by'
+;
+
+COMPARISONOPERATOR:
+	 (EQUAL | LESS | GREATER | NOTEQUAL | LESSEQUAL | GREATEQUAL | NOT)
+	  	
+;
+
+NOT:
+	not="not"
+;
+
+GREATEQUAL:
+	greateEqual+='greater' greateEqual+='or' greateEqual+='equal' greateEqual+='to'
+;
+
+LESSEQUAL:
+	lessEqual='less' 'or' 'equal' 'to' 
+;
+
+NOTEQUAL:
+	notEqual='not' 'equal' 'to'
+;
+
+GREATER:
+	greater='greater' 'than' 
+;
+
+LESS:
+	less+='less' less+='than' 
+;
+
+EQUAL:
+	equal='equal' 'to' 
+;  

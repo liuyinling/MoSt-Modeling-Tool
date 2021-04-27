@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="moStML" nsURI="http://www.xtext.org/example/mostml/MoStML" nsPrefix="moStML">
+  <eClassifiers xsi:type="ecore:EClass" name="MoSt">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NLRequirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nlReqID" eType="#//ReqID"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Environment" eSuperTypes="#//Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="envirReqID" eType="#//ReqID"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="envirVariable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="envirAttributeValue" eType="#//ATTRIBUTEVALUE"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="envirUnit" upperBound="-1"
+        eType="#//UNIT" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//RANG"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MODE" eSuperTypes="#//Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modeReqID" eType="#//ReqID"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preModeConditions" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preRelations" upperBound="-1"
+        eType="#//RELATION" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postModeCondition" eType="#//MODECONDITION"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="STATE" eSuperTypes="#//Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stateReqID" eType="#//ReqID"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preStateConditions" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+        eType="#//RELATION" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postStateConditions" upperBound="-1"
+        eType="#//STATECONDITON" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CONSTRAINT" eSuperTypes="#//Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraintReqID" eType="#//ReqID"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preConstraintConditions"
+        upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relations" upperBound="-1"
+        eType="#//RELATION" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postConstraintCondition"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PROPERTY" eSuperTypes="#//Requirement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertyReqID" eType="#//ReqID"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preOperator" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prePropertyConditions"
+        upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preRelations" upperBound="-1"
+        eType="#//RELATION" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postOperator" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postPropertyConditions"
+        upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postRelations" upperBound="-1"
+        eType="#//RELATION" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RANG">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compOperator1" eType="#//COMPARISONOPERATOR"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bound1" eType="#//ATTRIBUTEVALUE"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compOperator2" eType="#//COMPARISONOPERATOR"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bound2" eType="#//ATTRIBUTEVALUE"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unit" eType="#//UNIT" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CTLOperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AX" eSuperTypes="#//CTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EG" eSuperTypes="#//CTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EF" eSuperTypes="#//CTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ef" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AF" eSuperTypes="#//CTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="af" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AG" eSuperTypes="#//CTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LTLOperator"/>
+  <eClassifiers xsi:type="ecore:EClass" name="F" eSuperTypes="#//LTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="f" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="G" eSuperTypes="#//LTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="g" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="X" eSuperTypes="#//LTLOperator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RELATION">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relaion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SIGNALCONDITION">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signalName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReqID">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reqID" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATTRIBUTECONTION">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="#//COMPARISONOPERATOR"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValue" eType="#//ATTRIBUTEVALUE"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unit" upperBound="-1" eType="#//UNIT"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UNIT"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WEIGHT" eSuperTypes="#//UNIT">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TIME" eSuperTypes="#//UNIT">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SPEED" eSuperTypes="#//UNIT">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ATTRIBUTEVALUE"/>
+  <eClassifiers xsi:type="ecore:EClass" name="STRINGTYPE" eSuperTypes="#//ATTRIBUTEVALUE">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="string" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="INTTYPE" eSuperTypes="#//ATTRIBUTEVALUE">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="int" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BOOLEANTYPE" eSuperTypes="#//ATTRIBUTEVALUE">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="STATECONDITON">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compOperator" eType="#//COMPARISONOPERATOR"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MODECONDITION">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ARITHMETICCONDITION">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="result" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compcondition" eType="#//COMPARISONOPERATOR"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="var1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arithmeticOperator" eType="#//ARITHMETICOPERATOR"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="var2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ARITHMETICOPERATOR"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MODULE" eSuperTypes="#//ARITHMETICOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="add" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DIVISION" eSuperTypes="#//ARITHMETICOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="division" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MULTIPLICATION" eSuperTypes="#//ARITHMETICOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplication" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SUBTRACTION" eSuperTypes="#//ARITHMETICOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="substraction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ADD" eSuperTypes="#//ARITHMETICOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="add" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="COMPARISONOPERATOR"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NOT" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="not" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GREATEQUAL" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="greateEqual" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LESSEQUAL" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lessEqual" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NOTEQUAL" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="notEqual" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GREATER" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="greater" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LESS" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="less" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EQUAL" eSuperTypes="#//COMPARISONOPERATOR">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="equal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
