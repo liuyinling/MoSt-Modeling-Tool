@@ -89,6 +89,7 @@ public class MoStMLFactoryImpl extends EFactoryImpl implements MoStMLFactory
       case MoStMLPackage.REQ_ID: return createReqID();
       case MoStMLPackage.ATTRIBUTECONTION: return createATTRIBUTECONTION();
       case MoStMLPackage.UNIT: return createUNIT();
+      case MoStMLPackage.ACC: return createACC();
       case MoStMLPackage.WEIGHT: return createWEIGHT();
       case MoStMLPackage.TIME: return createTIME();
       case MoStMLPackage.SPEED: return createSPEED();
@@ -404,6 +405,18 @@ public class MoStMLFactoryImpl extends EFactoryImpl implements MoStMLFactory
   {
     UNITImpl unit = new UNITImpl();
     return unit;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ACC createACC()
+  {
+    ACCImpl acc = new ACCImpl();
+    return acc;
   }
 
   /**

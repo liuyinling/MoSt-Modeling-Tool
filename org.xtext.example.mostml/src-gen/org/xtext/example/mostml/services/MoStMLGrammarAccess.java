@@ -1137,25 +1137,45 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.UNIT");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cSPEEDParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cTIMEParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cWEIGHTParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cACCParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cTIMEParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cWEIGHTParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//UNIT:
-		//    SPEED | TIME | WEIGHT
+		//    SPEED | ACC | TIME | WEIGHT
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//SPEED | TIME | WEIGHT
+		//SPEED | ACC | TIME | WEIGHT
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//SPEED
 		public RuleCall getSPEEDParserRuleCall_0() { return cSPEEDParserRuleCall_0; }
 		
+		//ACC
+		public RuleCall getACCParserRuleCall_1() { return cACCParserRuleCall_1; }
+		
 		//TIME
-		public RuleCall getTIMEParserRuleCall_1() { return cTIMEParserRuleCall_1; }
+		public RuleCall getTIMEParserRuleCall_2() { return cTIMEParserRuleCall_2; }
 		
 		//WEIGHT
-		public RuleCall getWEIGHTParserRuleCall_2() { return cWEIGHTParserRuleCall_2; }
+		public RuleCall getWEIGHTParserRuleCall_3() { return cWEIGHTParserRuleCall_3; }
+	}
+	public class ACCElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.ACC");
+		private final Assignment cAccAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cAccMS2Keyword_0 = (Keyword)cAccAssignment.eContents().get(0);
+		
+		//ACC:
+		//    acc='m/s2'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//acc='m/s2'
+		public Assignment getAccAssignment() { return cAccAssignment; }
+		
+		//'m/s2'
+		public Keyword getAccMS2Keyword_0() { return cAccMS2Keyword_0; }
 	}
 	public class WEIGHTElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.WEIGHT");
@@ -1863,6 +1883,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final ReqIDElements pReqID;
 	private final ATTRIBUTECONTIONElements pATTRIBUTECONTION;
 	private final UNITElements pUNIT;
+	private final ACCElements pACC;
 	private final WEIGHTElements pWEIGHT;
 	private final TIMEElements pTIME;
 	private final SPEEDElements pSPEED;
@@ -1921,6 +1942,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pReqID = new ReqIDElements();
 		this.pATTRIBUTECONTION = new ATTRIBUTECONTIONElements();
 		this.pUNIT = new UNITElements();
+		this.pACC = new ACCElements();
 		this.pWEIGHT = new WEIGHTElements();
 		this.pTIME = new TIMEElements();
 		this.pSPEED = new SPEEDElements();
@@ -2235,7 +2257,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//UNIT:
-	//    SPEED | TIME | WEIGHT
+	//    SPEED | ACC | TIME | WEIGHT
 	//;
 	public UNITElements getUNITAccess() {
 		return pUNIT;
@@ -2243,6 +2265,17 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	
 	public ParserRule getUNITRule() {
 		return getUNITAccess().getRule();
+	}
+	
+	//ACC:
+	//    acc='m/s2'
+	//;
+	public ACCElements getACCAccess() {
+		return pACC;
+	}
+	
+	public ParserRule getACCRule() {
+		return getACCAccess().getRule();
 	}
 	
 	//WEIGHT:

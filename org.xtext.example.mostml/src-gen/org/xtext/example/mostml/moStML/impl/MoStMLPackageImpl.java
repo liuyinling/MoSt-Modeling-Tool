@@ -201,6 +201,13 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass accEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass weightEClass = null;
 
   /**
@@ -1203,6 +1210,28 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
    * @generated
    */
   @Override
+  public EClass getACC()
+  {
+    return accEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getACC_Acc()
+  {
+    return (EAttribute)accEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getWEIGHT()
   {
     return weightEClass;
@@ -1872,6 +1901,9 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
 
     unitEClass = createEClass(UNIT);
 
+    accEClass = createEClass(ACC);
+    createEAttribute(accEClass, ACC__ACC);
+
     weightEClass = createEClass(WEIGHT);
     createEAttribute(weightEClass, WEIGHT__WEIGHT);
 
@@ -1989,6 +2021,7 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     fEClass.getESuperTypes().add(this.getLTLOperator());
     gEClass.getESuperTypes().add(this.getLTLOperator());
     xEClass.getESuperTypes().add(this.getLTLOperator());
+    accEClass.getESuperTypes().add(this.getUNIT());
     weightEClass.getESuperTypes().add(this.getUNIT());
     timeEClass.getESuperTypes().add(this.getUNIT());
     speedEClass.getESuperTypes().add(this.getUNIT());
@@ -2102,6 +2135,9 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     initEReference(getATTRIBUTECONTION_Unit(), this.getUNIT(), null, "unit", null, 0, -1, org.xtext.example.mostml.moStML.ATTRIBUTECONTION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(unitEClass, org.xtext.example.mostml.moStML.UNIT.class, "UNIT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(accEClass, org.xtext.example.mostml.moStML.ACC.class, "ACC", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getACC_Acc(), ecorePackage.getEString(), "acc", null, 0, 1, org.xtext.example.mostml.moStML.ACC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(weightEClass, org.xtext.example.mostml.moStML.WEIGHT.class, "WEIGHT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWEIGHT_Weight(), ecorePackage.getEString(), "weight", null, 0, 1, org.xtext.example.mostml.moStML.WEIGHT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -196,6 +196,11 @@ public class MoStMLAdapterFactory extends AdapterFactoryImpl
         return createUNITAdapter();
       }
       @Override
+      public Adapter caseACC(ACC object)
+      {
+        return createACCAdapter();
+      }
+      @Override
       public Adapter caseWEIGHT(WEIGHT object)
       {
         return createWEIGHTAdapter();
@@ -693,6 +698,21 @@ public class MoStMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createUNITAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mostml.moStML.ACC <em>ACC</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mostml.moStML.ACC
+   * @generated
+   */
+  public Adapter createACCAdapter()
   {
     return null;
   }

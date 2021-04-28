@@ -240,6 +240,15 @@ public interface MoStMLFactory extends EFactory
   UNIT createUNIT();
 
   /**
+   * Returns a new object of class '<em>ACC</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>ACC</em>'.
+   * @generated
+   */
+  ACC createACC();
+
+  /**
    * Returns a new object of class '<em>WEIGHT</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

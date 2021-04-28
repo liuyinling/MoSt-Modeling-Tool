@@ -96,6 +96,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//ATTRIBUTECONTION/unit"/>
     </genClasses>
     <genClasses ecoreClass="MoStML.ecore#//UNIT"/>
+    <genClasses ecoreClass="MoStML.ecore#//ACC">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//ACC/acc"/>
+    </genClasses>
     <genClasses ecoreClass="MoStML.ecore#//WEIGHT">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//WEIGHT/weight"/>
     </genClasses>

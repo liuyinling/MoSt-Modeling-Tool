@@ -2205,22 +2205,62 @@ ruleUNIT returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getUNITAccess().getTIMEParserRuleCall_1());
+			newCompositeNode(grammarAccess.getUNITAccess().getACCParserRuleCall_1());
 		}
-		this_TIME_1=ruleTIME
+		this_ACC_1=ruleACC
 		{
-			$current = $this_TIME_1.current;
+			$current = $this_ACC_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getUNITAccess().getWEIGHTParserRuleCall_2());
+			newCompositeNode(grammarAccess.getUNITAccess().getTIMEParserRuleCall_2());
 		}
-		this_WEIGHT_2=ruleWEIGHT
+		this_TIME_2=ruleTIME
 		{
-			$current = $this_WEIGHT_2.current;
+			$current = $this_TIME_2.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getUNITAccess().getWEIGHTParserRuleCall_3());
+		}
+		this_WEIGHT_3=ruleWEIGHT
+		{
+			$current = $this_WEIGHT_3.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleACC
+entryRuleACC returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getACCRule()); }
+	iv_ruleACC=ruleACC
+	{ $current=$iv_ruleACC.current; }
+	EOF;
+
+// Rule ACC
+ruleACC returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_acc_0_0='m/s2'
+			{
+				newLeafNode(lv_acc_0_0, grammarAccess.getACCAccess().getAccMS2Keyword_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getACCRule());
+				}
+				setWithLastConsumed($current, "acc", lv_acc_0_0, "m/s2");
+			}
+		)
 	)
 ;
 

@@ -127,6 +127,9 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UNIT"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ACC" eSuperTypes="#//UNIT">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="acc" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WEIGHT" eSuperTypes="#//UNIT">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

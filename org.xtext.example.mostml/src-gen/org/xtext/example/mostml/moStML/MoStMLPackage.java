@@ -928,6 +928,34 @@ public interface MoStMLPackage extends EPackage
   int UNIT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mostml.moStML.impl.ACCImpl <em>ACC</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mostml.moStML.impl.ACCImpl
+   * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getACC()
+   * @generated
+   */
+  int ACC = 24;
+
+  /**
+   * The feature id for the '<em><b>Acc</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACC__ACC = UNIT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>ACC</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACC_FEATURE_COUNT = UNIT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mostml.moStML.impl.WEIGHTImpl <em>WEIGHT</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -935,7 +963,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getWEIGHT()
    * @generated
    */
-  int WEIGHT = 24;
+  int WEIGHT = 25;
 
   /**
    * The feature id for the '<em><b>Weight</b></em>' attribute.
@@ -963,7 +991,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getTIME()
    * @generated
    */
-  int TIME = 25;
+  int TIME = 26;
 
   /**
    * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -991,7 +1019,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getSPEED()
    * @generated
    */
-  int SPEED = 26;
+  int SPEED = 27;
 
   /**
    * The feature id for the '<em><b>Speed</b></em>' attribute.
@@ -1019,7 +1047,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getATTRIBUTEVALUE()
    * @generated
    */
-  int ATTRIBUTEVALUE = 27;
+  int ATTRIBUTEVALUE = 28;
 
   /**
    * The number of structural features of the '<em>ATTRIBUTEVALUE</em>' class.
@@ -1038,7 +1066,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getSTRINGTYPE()
    * @generated
    */
-  int STRINGTYPE = 28;
+  int STRINGTYPE = 29;
 
   /**
    * The feature id for the '<em><b>String</b></em>' attribute.
@@ -1066,7 +1094,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getINTTYPE()
    * @generated
    */
-  int INTTYPE = 29;
+  int INTTYPE = 30;
 
   /**
    * The feature id for the '<em><b>Int</b></em>' attribute.
@@ -1094,7 +1122,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getBOOLEANTYPE()
    * @generated
    */
-  int BOOLEANTYPE = 30;
+  int BOOLEANTYPE = 31;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1122,7 +1150,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getSTATECONDITON()
    * @generated
    */
-  int STATECONDITON = 31;
+  int STATECONDITON = 32;
 
   /**
    * The feature id for the '<em><b>State Name</b></em>' attribute.
@@ -1159,7 +1187,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getMODECONDITION()
    * @generated
    */
-  int MODECONDITION = 32;
+  int MODECONDITION = 33;
 
   /**
    * The feature id for the '<em><b>Mode Name</b></em>' attribute.
@@ -1187,7 +1215,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getARITHMETICCONDITION()
    * @generated
    */
-  int ARITHMETICCONDITION = 33;
+  int ARITHMETICCONDITION = 34;
 
   /**
    * The feature id for the '<em><b>Result</b></em>' attribute.
@@ -1251,7 +1279,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getARITHMETICOPERATOR()
    * @generated
    */
-  int ARITHMETICOPERATOR = 34;
+  int ARITHMETICOPERATOR = 35;
 
   /**
    * The number of structural features of the '<em>ARITHMETICOPERATOR</em>' class.
@@ -1270,7 +1298,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getMODULE()
    * @generated
    */
-  int MODULE = 35;
+  int MODULE = 36;
 
   /**
    * The feature id for the '<em><b>Add</b></em>' attribute.
@@ -1298,7 +1326,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getDIVISION()
    * @generated
    */
-  int DIVISION = 36;
+  int DIVISION = 37;
 
   /**
    * The feature id for the '<em><b>Division</b></em>' attribute.
@@ -1326,7 +1354,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getMULTIPLICATION()
    * @generated
    */
-  int MULTIPLICATION = 37;
+  int MULTIPLICATION = 38;
 
   /**
    * The feature id for the '<em><b>Multiplication</b></em>' attribute.
@@ -1354,7 +1382,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getSUBTRACTION()
    * @generated
    */
-  int SUBTRACTION = 38;
+  int SUBTRACTION = 39;
 
   /**
    * The feature id for the '<em><b>Substraction</b></em>' attribute.
@@ -1382,7 +1410,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getADD()
    * @generated
    */
-  int ADD = 39;
+  int ADD = 40;
 
   /**
    * The feature id for the '<em><b>Add</b></em>' attribute.
@@ -1410,7 +1438,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getCOMPARISONOPERATOR()
    * @generated
    */
-  int COMPARISONOPERATOR = 40;
+  int COMPARISONOPERATOR = 41;
 
   /**
    * The number of structural features of the '<em>COMPARISONOPERATOR</em>' class.
@@ -1429,7 +1457,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getNOT()
    * @generated
    */
-  int NOT = 41;
+  int NOT = 42;
 
   /**
    * The feature id for the '<em><b>Not</b></em>' attribute.
@@ -1457,7 +1485,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getGREATEQUAL()
    * @generated
    */
-  int GREATEQUAL = 42;
+  int GREATEQUAL = 43;
 
   /**
    * The feature id for the '<em><b>Greate Equal</b></em>' attribute list.
@@ -1485,7 +1513,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getLESSEQUAL()
    * @generated
    */
-  int LESSEQUAL = 43;
+  int LESSEQUAL = 44;
 
   /**
    * The feature id for the '<em><b>Less Equal</b></em>' attribute.
@@ -1513,7 +1541,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getNOTEQUAL()
    * @generated
    */
-  int NOTEQUAL = 44;
+  int NOTEQUAL = 45;
 
   /**
    * The feature id for the '<em><b>Not Equal</b></em>' attribute.
@@ -1541,7 +1569,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getGREATER()
    * @generated
    */
-  int GREATER = 45;
+  int GREATER = 46;
 
   /**
    * The feature id for the '<em><b>Greater</b></em>' attribute.
@@ -1569,7 +1597,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getLESS()
    * @generated
    */
-  int LESS = 46;
+  int LESS = 47;
 
   /**
    * The feature id for the '<em><b>Less</b></em>' attribute list.
@@ -1597,7 +1625,7 @@ public interface MoStMLPackage extends EPackage
    * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getEQUAL()
    * @generated
    */
-  int EQUAL = 47;
+  int EQUAL = 48;
 
   /**
    * The feature id for the '<em><b>Equal</b></em>' attribute.
@@ -2363,6 +2391,27 @@ public interface MoStMLPackage extends EPackage
    * @generated
    */
   EClass getUNIT();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mostml.moStML.ACC <em>ACC</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>ACC</em>'.
+   * @see org.xtext.example.mostml.moStML.ACC
+   * @generated
+   */
+  EClass getACC();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mostml.moStML.ACC#getAcc <em>Acc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Acc</em>'.
+   * @see org.xtext.example.mostml.moStML.ACC#getAcc()
+   * @see #getACC()
+   * @generated
+   */
+  EAttribute getACC_Acc();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mostml.moStML.WEIGHT <em>WEIGHT</em>}'.
@@ -3520,6 +3569,24 @@ public interface MoStMLPackage extends EPackage
      * @generated
      */
     EClass UNIT = eINSTANCE.getUNIT();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mostml.moStML.impl.ACCImpl <em>ACC</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mostml.moStML.impl.ACCImpl
+     * @see org.xtext.example.mostml.moStML.impl.MoStMLPackageImpl#getACC()
+     * @generated
+     */
+    EClass ACC = eINSTANCE.getACC();
+
+    /**
+     * The meta object literal for the '<em><b>Acc</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ACC__ACC = eINSTANCE.getACC_Acc();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mostml.moStML.impl.WEIGHTImpl <em>WEIGHT</em>}' class.

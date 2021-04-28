@@ -14,6 +14,7 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.xtext.example.mostml.moStML.ACC;
 import org.xtext.example.mostml.moStML.ADD;
 import org.xtext.example.mostml.moStML.AF;
 import org.xtext.example.mostml.moStML.AG;
@@ -72,6 +73,9 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MoStMLPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case MoStMLPackage.ACC:
+				sequence_ACC(context, (ACC) semanticObject); 
+				return; 
 			case MoStMLPackage.ADD:
 				sequence_ADD(context, (ADD) semanticObject); 
 				return; 
@@ -199,6 +203,25 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     UNIT returns ACC
+	 *     ACC returns ACC
+	 *
+	 * Constraint:
+	 *     acc='m/s2'
+	 */
+	protected void sequence_ACC(ISerializationContext context, ACC semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.ACC__ACC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.ACC__ACC));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getACCAccess().getAccMS2Keyword_0(), semanticObject.getAcc());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -730,8 +753,8 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     (
 	 *         propertyReqID=ReqID 
 	 *         (preOperator=CTLOperator | preOperator=LTLOperator) 
-	 *         prePropertyConditions+=ATTRIBUTECONTION? 
-	 *         ((prePropertyConditions+=STATECONDITON | prePropertyConditions+=MODECONDITION)? prePropertyConditions+=ATTRIBUTECONTION?)* 
+	 *         prePropertyConditions+=MODECONDITION? 
+	 *         ((prePropertyConditions+=STATECONDITON | prePropertyConditions+=ATTRIBUTECONTION)? prePropertyConditions+=MODECONDITION?)* 
 	 *         (
 	 *             preRelations+=RELATION 
 	 *             (prePropertyConditions+=STATECONDITON | prePropertyConditions+=ATTRIBUTECONTION | prePropertyConditions+=MODECONDITION)

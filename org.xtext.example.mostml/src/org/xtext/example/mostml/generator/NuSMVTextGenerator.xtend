@@ -39,6 +39,7 @@ import org.xtext.example.mostml.moStML.MULTIPLICATION
 import org.xtext.example.mostml.moStML.DIVISION
 import java.util.HashMap
 import org.xtext.example.mostml.moStML.MODE
+import org.xtext.example.mostml.moStML.ACC
 
 class NuSMVTextGenerator {
 	// Environment Requirement: the speed of the car should less than 100 km/h.
@@ -88,10 +89,12 @@ class NuSMVTextGenerator {
 	  	  next(«constraintMap.key»):=
 	  	    case
     	    «IF constraintMap.value.contains("@")»
-		  	    «FOR condition: constraintMap.value.split("@").get(1).split("#")»
-		  	    «IF condition!==""»«condition»«ENDIF»
-		        «ENDFOR»
-	  	     «ENDIF»
+		  	«FOR condition: constraintMap.value.split("@").get(1).split("#")»
+				«IF condition!==""»
+				«condition»
+				«ENDIF»
+		    «ENDFOR»
+	  	    «ENDIF»
 	  	        TRUE: «constraintMap.key»;
 	  	    esac;
 		«ENDFOR»
@@ -288,6 +291,10 @@ class NuSMVTextGenerator {
 	}
 	def static dispatch getUnit(WEIGHT w){
 		if(w!==null) w.weight
+	}
+	
+	def static dispatch getUnit(ACC ac){
+		if(ac!==null) ac.acc
 	}
 	def  dispatch static getCondition(MODECONDITION modeCondition){
 		if(modeCondition!==null) 

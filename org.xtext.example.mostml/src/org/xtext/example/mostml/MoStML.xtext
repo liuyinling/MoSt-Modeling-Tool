@@ -104,8 +104,12 @@ ATTRIBUTECONTION:
 ;
 
 UNIT:
-	SPEED | TIME | WEIGHT
+	SPEED | ACC | TIME | WEIGHT
 	
+;
+
+ACC:
+	acc='m/s2'
 ;
 
 WEIGHT:
