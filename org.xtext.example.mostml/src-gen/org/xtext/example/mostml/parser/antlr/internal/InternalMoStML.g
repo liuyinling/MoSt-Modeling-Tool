@@ -2780,20 +2780,41 @@ ruleARITHMETICCONDITION returns [EObject current=null]
 		)
 		(
 			(
-				lv_var2_6_0=RULE_ID
-				{
-					newLeafNode(lv_var2_6_0, grammarAccess.getARITHMETICCONDITIONAccess().getVar2IDTerminalRuleCall_6_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getARITHMETICCONDITIONRule());
+				(
+					lv_var2_6_0=RULE_ID
+					{
+						newLeafNode(lv_var2_6_0, grammarAccess.getARITHMETICCONDITIONAccess().getVar2IDTerminalRuleCall_6_0_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"var2",
-						lv_var2_6_0,
-						"org.eclipse.xtext.common.Terminals.ID");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getARITHMETICCONDITIONRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"var2",
+							lv_var2_6_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			    |
+			(
+				(
+					lv_var3_7_0=RULE_INT
+					{
+						newLeafNode(lv_var3_7_0, grammarAccess.getARITHMETICCONDITIONAccess().getVar3INTTerminalRuleCall_6_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getARITHMETICCONDITIONRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"var3",
+							lv_var3_7_0,
+							"org.eclipse.xtext.common.Terminals.INT");
+					}
+				)
 			)
 		)
 	)

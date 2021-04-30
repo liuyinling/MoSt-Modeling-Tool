@@ -151,7 +151,7 @@ MODECONDITION:
 ;
 
 ARITHMETICCONDITION:
-	ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
+	ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR (var2 = ID | var3 =INT )
 ;
 
 ARITHMETICOPERATOR:

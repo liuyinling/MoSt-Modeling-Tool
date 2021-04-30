@@ -1263,13 +1263,22 @@ public interface MoStMLPackage extends EPackage
   int ARITHMETICCONDITION__VAR2 = 4;
 
   /**
+   * The feature id for the '<em><b>Var3</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARITHMETICCONDITION__VAR3 = 5;
+
+  /**
    * The number of structural features of the '<em>ARITHMETICCONDITION</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ARITHMETICCONDITION_FEATURE_COUNT = 5;
+  int ARITHMETICCONDITION_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mostml.moStML.impl.ARITHMETICOPERATORImpl <em>ARITHMETICOPERATOR</em>}' class.
@@ -2668,6 +2677,17 @@ public interface MoStMLPackage extends EPackage
   EAttribute getARITHMETICCONDITION_Var2();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getVar3 <em>Var3</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Var3</em>'.
+   * @see org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getVar3()
+   * @see #getARITHMETICCONDITION()
+   * @generated
+   */
+  EAttribute getARITHMETICCONDITION_Var3();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mostml.moStML.ARITHMETICOPERATOR <em>ARITHMETICOPERATOR</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3799,6 +3819,14 @@ public interface MoStMLPackage extends EPackage
      * @generated
      */
     EAttribute ARITHMETICCONDITION__VAR2 = eINSTANCE.getARITHMETICCONDITION_Var2();
+
+    /**
+     * The meta object literal for the '<em><b>Var3</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ARITHMETICCONDITION__VAR3 = eINSTANCE.getARITHMETICCONDITION_Var3();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mostml.moStML.impl.ARITHMETICOPERATORImpl <em>ARITHMETICOPERATOR</em>}' class.

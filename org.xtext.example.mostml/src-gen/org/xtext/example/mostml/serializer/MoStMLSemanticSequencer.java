@@ -285,28 +285,10 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     ARITHMETICCONDITION returns ARITHMETICCONDITION
 	 *
 	 * Constraint:
-	 *     (result=ID compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2=ID)
+	 *     (result=ID compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR (var2=ID | var3=INT))
 	 */
 	protected void sequence_ARITHMETICCONDITION(ISerializationContext context, ARITHMETICCONDITION semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__RESULT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__RESULT));
-			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__COMPCONDITION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__COMPCONDITION));
-			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__VAR1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__VAR1));
-			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__ARITHMETIC_OPERATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__ARITHMETIC_OPERATOR));
-			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__VAR2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.ARITHMETICCONDITION__VAR2));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getARITHMETICCONDITIONAccess().getResultIDTerminalRuleCall_1_0(), semanticObject.getResult());
-		feeder.accept(grammarAccess.getARITHMETICCONDITIONAccess().getCompconditionCOMPARISONOPERATORParserRuleCall_3_0(), semanticObject.getCompcondition());
-		feeder.accept(grammarAccess.getARITHMETICCONDITIONAccess().getVar1IDTerminalRuleCall_4_0(), semanticObject.getVar1());
-		feeder.accept(grammarAccess.getARITHMETICCONDITIONAccess().getArithmeticOperatorARITHMETICOPERATORParserRuleCall_5_0(), semanticObject.getArithmeticOperator());
-		feeder.accept(grammarAccess.getARITHMETICCONDITIONAccess().getVar2IDTerminalRuleCall_6_0(), semanticObject.getVar2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -362,10 +344,10 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 * Constraint:
 	 *     (
 	 *         constraintReqID=ReqID 
-	 *         preConstraintConditions+=MODECONDITION? 
+	 *         preConstraintConditions+=SIGNALCONDITION? 
 	 *         (
-	 *             (preConstraintConditions+=STATECONDITON | preConstraintConditions+=ATTRIBUTECONTION | preConstraintConditions+=SIGNALCONDITION)? 
-	 *             preConstraintConditions+=MODECONDITION?
+	 *             (preConstraintConditions+=STATECONDITON | preConstraintConditions+=ATTRIBUTECONTION | preConstraintConditions+=MODECONDITION)? 
+	 *             preConstraintConditions+=SIGNALCONDITION?
 	 *         )* 
 	 *         (
 	 *             relations+=RELATION 
@@ -753,8 +735,8 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     (
 	 *         propertyReqID=ReqID 
 	 *         (preOperator=CTLOperator | preOperator=LTLOperator) 
-	 *         prePropertyConditions+=MODECONDITION? 
-	 *         ((prePropertyConditions+=STATECONDITON | prePropertyConditions+=ATTRIBUTECONTION)? prePropertyConditions+=MODECONDITION?)* 
+	 *         prePropertyConditions+=STATECONDITON? 
+	 *         ((prePropertyConditions+=ATTRIBUTECONTION | prePropertyConditions+=MODECONDITION)? prePropertyConditions+=STATECONDITON?)* 
 	 *         (
 	 *             preRelations+=RELATION 
 	 *             (prePropertyConditions+=STATECONDITON | prePropertyConditions+=ATTRIBUTECONTION | prePropertyConditions+=MODECONDITION)

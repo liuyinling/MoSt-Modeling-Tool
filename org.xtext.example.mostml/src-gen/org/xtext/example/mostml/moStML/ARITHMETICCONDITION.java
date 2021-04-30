@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getVar1 <em>Var1</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getArithmeticOperator <em>Arithmetic Operator</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getVar2 <em>Var2</em>}</li>
+ *   <li>{@link org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getVar3 <em>Var3</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mostml.moStML.MoStMLPackage#getARITHMETICCONDITION()
@@ -136,5 +137,27 @@ public interface ARITHMETICCONDITION extends EObject
    * @generated
    */
   void setVar2(String value);
+
+  /**
+   * Returns the value of the '<em><b>Var3</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Var3</em>' attribute.
+   * @see #setVar3(int)
+   * @see org.xtext.example.mostml.moStML.MoStMLPackage#getARITHMETICCONDITION_Var3()
+   * @model
+   * @generated
+   */
+  int getVar3();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mostml.moStML.ARITHMETICCONDITION#getVar3 <em>Var3</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var3</em>' attribute.
+   * @see #getVar3()
+   * @generated
+   */
+  void setVar3(int value);
 
 } // ARITHMETICCONDITION

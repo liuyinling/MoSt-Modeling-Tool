@@ -131,6 +131,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//ARITHMETICCONDITION/var1"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//ARITHMETICCONDITION/arithmeticOperator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//ARITHMETICCONDITION/var2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//ARITHMETICCONDITION/var3"/>
     </genClasses>
     <genClasses ecoreClass="MoStML.ecore#//ARITHMETICOPERATOR"/>
     <genClasses ecoreClass="MoStML.ecore#//MODULE">

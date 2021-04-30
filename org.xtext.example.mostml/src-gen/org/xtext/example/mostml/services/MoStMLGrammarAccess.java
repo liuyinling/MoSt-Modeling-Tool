@@ -1422,15 +1422,18 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cVar1IDTerminalRuleCall_4_0 = (RuleCall)cVar1Assignment_4.eContents().get(0);
 		private final Assignment cArithmeticOperatorAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cArithmeticOperatorARITHMETICOPERATORParserRuleCall_5_0 = (RuleCall)cArithmeticOperatorAssignment_5.eContents().get(0);
-		private final Assignment cVar2Assignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cVar2IDTerminalRuleCall_6_0 = (RuleCall)cVar2Assignment_6.eContents().get(0);
+		private final Alternatives cAlternatives_6 = (Alternatives)cGroup.eContents().get(6);
+		private final Assignment cVar2Assignment_6_0 = (Assignment)cAlternatives_6.eContents().get(0);
+		private final RuleCall cVar2IDTerminalRuleCall_6_0_0 = (RuleCall)cVar2Assignment_6_0.eContents().get(0);
+		private final Assignment cVar3Assignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
+		private final RuleCall cVar3INTTerminalRuleCall_6_1_0 = (RuleCall)cVar3Assignment_6_1.eContents().get(0);
 		
 		//ARITHMETICCONDITION:
-		//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
+		//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR (var2 = ID | var3 =INT )
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
+		//ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR (var2 = ID | var3 =INT )
 		public Group getGroup() { return cGroup; }
 		
 		//ID
@@ -1463,11 +1466,20 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//ARITHMETICOPERATOR
 		public RuleCall getArithmeticOperatorARITHMETICOPERATORParserRuleCall_5_0() { return cArithmeticOperatorARITHMETICOPERATORParserRuleCall_5_0; }
 		
+		//(var2 = ID | var3 =INT )
+		public Alternatives getAlternatives_6() { return cAlternatives_6; }
+		
 		//var2 = ID
-		public Assignment getVar2Assignment_6() { return cVar2Assignment_6; }
+		public Assignment getVar2Assignment_6_0() { return cVar2Assignment_6_0; }
 		
 		//ID
-		public RuleCall getVar2IDTerminalRuleCall_6_0() { return cVar2IDTerminalRuleCall_6_0; }
+		public RuleCall getVar2IDTerminalRuleCall_6_0_0() { return cVar2IDTerminalRuleCall_6_0_0; }
+		
+		//var3 =INT
+		public Assignment getVar3Assignment_6_1() { return cVar3Assignment_6_1; }
+		
+		//INT
+		public RuleCall getVar3INTTerminalRuleCall_6_1_0() { return cVar3INTTerminalRuleCall_6_1_0; }
 	}
 	public class ARITHMETICOPERATORElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.ARITHMETICOPERATOR");
@@ -2378,7 +2390,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//ARITHMETICCONDITION:
-	//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
+	//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR (var2 = ID | var3 =INT )
 	//;
 	public ARITHMETICCONDITIONElements getARITHMETICCONDITIONAccess() {
 		return pARITHMETICCONDITION;

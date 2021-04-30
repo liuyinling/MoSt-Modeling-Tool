@@ -1496,6 +1496,17 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
    * @generated
    */
   @Override
+  public EAttribute getARITHMETICCONDITION_Var3()
+  {
+    return (EAttribute)arithmeticconditionEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getARITHMETICOPERATOR()
   {
     return arithmeticoperatorEClass;
@@ -1937,6 +1948,7 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     createEAttribute(arithmeticconditionEClass, ARITHMETICCONDITION__VAR1);
     createEReference(arithmeticconditionEClass, ARITHMETICCONDITION__ARITHMETIC_OPERATOR);
     createEAttribute(arithmeticconditionEClass, ARITHMETICCONDITION__VAR2);
+    createEAttribute(arithmeticconditionEClass, ARITHMETICCONDITION__VAR3);
 
     arithmeticoperatorEClass = createEClass(ARITHMETICOPERATOR);
 
@@ -2172,6 +2184,7 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     initEAttribute(getARITHMETICCONDITION_Var1(), ecorePackage.getEString(), "var1", null, 0, 1, org.xtext.example.mostml.moStML.ARITHMETICCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getARITHMETICCONDITION_ArithmeticOperator(), this.getARITHMETICOPERATOR(), null, "arithmeticOperator", null, 0, 1, org.xtext.example.mostml.moStML.ARITHMETICCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getARITHMETICCONDITION_Var2(), ecorePackage.getEString(), "var2", null, 0, 1, org.xtext.example.mostml.moStML.ARITHMETICCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getARITHMETICCONDITION_Var3(), ecorePackage.getEInt(), "var3", null, 0, 1, org.xtext.example.mostml.moStML.ARITHMETICCONDITION.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(arithmeticoperatorEClass, org.xtext.example.mostml.moStML.ARITHMETICOPERATOR.class, "ARITHMETICOPERATOR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

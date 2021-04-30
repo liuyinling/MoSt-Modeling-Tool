@@ -30,6 +30,7 @@ import org.xtext.example.mostml.moStML.MoStMLPackage;
  *   <li>{@link org.xtext.example.mostml.moStML.impl.ARITHMETICCONDITIONImpl#getVar1 <em>Var1</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.impl.ARITHMETICCONDITIONImpl#getArithmeticOperator <em>Arithmetic Operator</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.impl.ARITHMETICCONDITIONImpl#getVar2 <em>Var2</em>}</li>
+ *   <li>{@link org.xtext.example.mostml.moStML.impl.ARITHMETICCONDITIONImpl#getVar3 <em>Var3</em>}</li>
  * </ul>
  *
  * @generated
@@ -115,6 +116,26 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
    * @ordered
    */
   protected String var2 = VAR2_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getVar3() <em>Var3</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar3()
+   * @generated
+   * @ordered
+   */
+  protected static final int VAR3_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getVar3() <em>Var3</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar3()
+   * @generated
+   * @ordered
+   */
+  protected int var3 = VAR3_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -318,6 +339,31 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
+  public int getVar3()
+  {
+    return var3;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVar3(int newVar3)
+  {
+    int oldVar3 = var3;
+    var3 = newVar3;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoStMLPackage.ARITHMETICCONDITION__VAR3, oldVar3, var3));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -350,6 +396,8 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
         return getArithmeticOperator();
       case MoStMLPackage.ARITHMETICCONDITION__VAR2:
         return getVar2();
+      case MoStMLPackage.ARITHMETICCONDITION__VAR3:
+        return getVar3();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -378,6 +426,9 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
         return;
       case MoStMLPackage.ARITHMETICCONDITION__VAR2:
         setVar2((String)newValue);
+        return;
+      case MoStMLPackage.ARITHMETICCONDITION__VAR3:
+        setVar3((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -408,6 +459,9 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
       case MoStMLPackage.ARITHMETICCONDITION__VAR2:
         setVar2(VAR2_EDEFAULT);
         return;
+      case MoStMLPackage.ARITHMETICCONDITION__VAR3:
+        setVar3(VAR3_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -432,6 +486,8 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
         return arithmeticOperator != null;
       case MoStMLPackage.ARITHMETICCONDITION__VAR2:
         return VAR2_EDEFAULT == null ? var2 != null : !VAR2_EDEFAULT.equals(var2);
+      case MoStMLPackage.ARITHMETICCONDITION__VAR3:
+        return var3 != VAR3_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -453,6 +509,8 @@ public class ARITHMETICCONDITIONImpl extends MinimalEObjectImpl.Container implem
     result.append(var1);
     result.append(", var2: ");
     result.append(var2);
+    result.append(", var3: ");
+    result.append(var3);
     result.append(')');
     return result.toString();
   }

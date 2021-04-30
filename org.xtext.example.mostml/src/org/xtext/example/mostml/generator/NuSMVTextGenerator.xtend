@@ -56,6 +56,7 @@ class NuSMVTextGenerator {
 	«getConstraintRequirements(root)»
 	«getEnvironmentRequirements(root)»
 	«getModeTransitions(root)»
+	«getStates(root)»
 	MODULE main
 	----------------Specification Definition-------------------
 	«FOR propertyReq: root.model.filter(PROPERTY)» 
@@ -182,6 +183,16 @@ class NuSMVTextGenerator {
 			}
 		}	
 	}
+	
+	def static getStates(MoSt root){
+		for(stateReq: root.model.filter(STATE)) {
+			if(stateReq!==null){
+				states.put(stateReq.preStateConditions.get(0).condition.split("=").get(1).trim,"state");
+				states.put(stateReq.postStateCondition.stateName,"state");
+			}
+		}
+		
+	}
 		
 	def static getRelation(RELATION re){
 		if(re.relaion.trim.equals("and")) "&"
@@ -301,7 +312,6 @@ class NuSMVTextGenerator {
 			"mode = "+modeCondition.modeName
 	}
 	def  dispatch static getCondition(STATECONDITON stateCondition){
-		states.put(stateCondition.stateName,"state");
 		if(stateCondition.compOperator!==null) "state != "+stateCondition.stateName
 		else "state = "+stateCondition.stateName
 		
@@ -326,6 +336,8 @@ class NuSMVTextGenerator {
 		}
 	}
 	def  dispatch static getCondition(ARITHMETICCONDITION arithmeticCondition){
-		if(arithmeticCondition!==null) arithmeticCondition.result+arithmeticCondition.compcondition.operator+arithmeticCondition.var1+arithmeticCondition.arithmeticOperator.arithmeticOperator+arithmeticCondition.var2
+		if(arithmeticCondition!==null && arithmeticCondition.var2!==null ) arithmeticCondition.result+arithmeticCondition.compcondition.operator+arithmeticCondition.var1+arithmeticCondition.arithmeticOperator.arithmeticOperator+arithmeticCondition.var2
+		else if(arithmeticCondition!==null && arithmeticCondition.var3.toString!==null) arithmeticCondition.result+arithmeticCondition.compcondition.operator+arithmeticCondition.var1+arithmeticCondition.arithmeticOperator.arithmeticOperator+arithmeticCondition.var3
+		else System.out.println("Arithmetic condition is not well written !");
 	}	
 }
