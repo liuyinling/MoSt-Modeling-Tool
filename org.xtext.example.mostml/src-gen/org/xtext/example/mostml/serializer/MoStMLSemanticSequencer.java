@@ -888,7 +888,7 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *             relations+=RELATION 
 	 *             (preStateConditions+=STATECONDITON | preStateConditions+=ATTRIBUTECONTION | preStateConditions+=MODECONDITION | preStateConditions+=SIGNALCONDITION)
 	 *         )* 
-	 *         postStateConditions+=STATECONDITON*
+	 *         postStateCondition=STATECONDITON
 	 *     )
 	 */
 	protected void sequence_STATE(ISerializationContext context, STATE semanticObject) {

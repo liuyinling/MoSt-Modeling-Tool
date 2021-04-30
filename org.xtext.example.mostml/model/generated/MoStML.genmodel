@@ -30,7 +30,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//STATE/stateReqID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//STATE/preStateConditions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//STATE/relations"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//STATE/postStateConditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//STATE/postStateCondition"/>
     </genClasses>
     <genClasses ecoreClass="MoStML.ecore#//CONSTRAINT">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MoStML.ecore#//CONSTRAINT/constraintReqID"/>

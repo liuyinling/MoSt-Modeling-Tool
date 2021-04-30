@@ -716,22 +716,22 @@ ruleSTATE returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSTATEAccess().getPostStateConditionsSTATECONDITONParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getSTATEAccess().getPostStateConditionSTATECONDITONParserRuleCall_6_0());
 				}
-				lv_postStateConditions_7_0=ruleSTATECONDITON
+				lv_postStateCondition_7_0=ruleSTATECONDITON
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSTATERule());
 					}
-					add(
+					set(
 						$current,
-						"postStateConditions",
-						lv_postStateConditions_7_0,
+						"postStateCondition",
+						lv_postStateCondition_7_0,
 						"org.xtext.example.mostml.MoStML.STATECONDITON");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)*
+		)
 		otherlv_8='.'
 		{
 			newLeafNode(otherlv_8, grammarAccess.getSTATEAccess().getFullStopKeyword_7());

@@ -78,7 +78,7 @@ class NuSMVTextGenerator {
 	    case 
 		«FOR stateReq: root.model.filter(STATE)»
 			«var indexStates =0»
-			«FOR preStateCondition: stateReq.preStateConditions»«preStateCondition.condition»«IF indexStates<=(stateReq.relations.size-1)» «stateReq.relations.get(indexStates++).relation» «ENDIF»«ENDFOR»: «FOR postStateCondition: stateReq.postStateConditions»«postStateCondition.condition.split("=").get(1)»;--«stateReq.stateReqID.reqID»«ENDFOR»
+			«FOR preStateCondition: stateReq.preStateConditions»«preStateCondition.condition»«IF indexStates<=(stateReq.relations.size-1)» «stateReq.relations.get(indexStates++).relation» «ENDIF»«ENDFOR»: «stateReq.postStateCondition.condition.split("=").get(1)»;--«stateReq.stateReqID.reqID»
 		«ENDFOR»
 	    	TRUE : state;
 	    esac)

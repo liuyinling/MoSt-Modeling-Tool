@@ -457,8 +457,8 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 				tempPreCondition+=preCondition.condition;
 			}	
 		}
-		if(stateReq.postStateConditions.size!==0){
-			tempPostCondition+=	stateReq.postStateConditions.get(0).condition;
+		if(stateReq.postStateCondition!==null){
+			tempPostCondition+=	stateReq.postStateCondition.condition;
 		}
 		if(stateReqs.containsKey(tempPreCondition)){
 			if(stateReqs.get(tempPreCondition).equals(tempPostCondition)){

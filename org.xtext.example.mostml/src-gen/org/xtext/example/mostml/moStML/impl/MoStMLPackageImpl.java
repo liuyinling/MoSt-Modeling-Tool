@@ -660,7 +660,7 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
    * @generated
    */
   @Override
-  public EReference getSTATE_PostStateConditions()
+  public EReference getSTATE_PostStateCondition()
   {
     return (EReference)stateEClass.getEStructuralFeatures().get(3);
   }
@@ -1832,7 +1832,7 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     createEReference(stateEClass, STATE__STATE_REQ_ID);
     createEReference(stateEClass, STATE__PRE_STATE_CONDITIONS);
     createEReference(stateEClass, STATE__RELATIONS);
-    createEReference(stateEClass, STATE__POST_STATE_CONDITIONS);
+    createEReference(stateEClass, STATE__POST_STATE_CONDITION);
 
     constraintEClass = createEClass(CONSTRAINT);
     createEReference(constraintEClass, CONSTRAINT__CONSTRAINT_REQ_ID);
@@ -2067,7 +2067,7 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     initEReference(getSTATE_StateReqID(), this.getReqID(), null, "stateReqID", null, 0, 1, org.xtext.example.mostml.moStML.STATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSTATE_PreStateConditions(), ecorePackage.getEObject(), null, "preStateConditions", null, 0, -1, org.xtext.example.mostml.moStML.STATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSTATE_Relations(), this.getRELATION(), null, "relations", null, 0, -1, org.xtext.example.mostml.moStML.STATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSTATE_PostStateConditions(), this.getSTATECONDITON(), null, "postStateConditions", null, 0, -1, org.xtext.example.mostml.moStML.STATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSTATE_PostStateCondition(), this.getSTATECONDITON(), null, "postStateCondition", null, 0, 1, org.xtext.example.mostml.moStML.STATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constraintEClass, org.xtext.example.mostml.moStML.CONSTRAINT.class, "CONSTRAINT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCONSTRAINT_ConstraintReqID(), this.getReqID(), null, "constraintReqID", null, 0, 1, org.xtext.example.mostml.moStML.CONSTRAINT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.xtext.example.mostml.moStML.STATE#getStateReqID <em>State Req ID</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.STATE#getPreStateConditions <em>Pre State Conditions</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.STATE#getRelations <em>Relations</em>}</li>
- *   <li>{@link org.xtext.example.mostml.moStML.STATE#getPostStateConditions <em>Post State Conditions</em>}</li>
+ *   <li>{@link org.xtext.example.mostml.moStML.STATE#getPostStateCondition <em>Post State Condition</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.mostml.moStML.MoStMLPackage#getSTATE()
@@ -75,15 +75,25 @@ public interface STATE extends Requirement
   EList<RELATION> getRelations();
 
   /**
-   * Returns the value of the '<em><b>Post State Conditions</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.mostml.moStML.STATECONDITON}.
+   * Returns the value of the '<em><b>Post State Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Post State Conditions</em>' containment reference list.
-   * @see org.xtext.example.mostml.moStML.MoStMLPackage#getSTATE_PostStateConditions()
+   * @return the value of the '<em>Post State Condition</em>' containment reference.
+   * @see #setPostStateCondition(STATECONDITON)
+   * @see org.xtext.example.mostml.moStML.MoStMLPackage#getSTATE_PostStateCondition()
    * @model containment="true"
    * @generated
    */
-  EList<STATECONDITON> getPostStateConditions();
+  STATECONDITON getPostStateCondition();
+
+  /**
+   * Sets the value of the '{@link org.xtext.example.mostml.moStML.STATE#getPostStateCondition <em>Post State Condition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Post State Condition</em>' containment reference.
+   * @see #getPostStateCondition()
+   * @generated
+   */
+  void setPostStateCondition(STATECONDITON value);
 
 } // STATE

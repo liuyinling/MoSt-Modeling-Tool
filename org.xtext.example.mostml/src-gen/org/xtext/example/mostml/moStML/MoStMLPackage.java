@@ -289,13 +289,13 @@ public interface MoStMLPackage extends EPackage
   int STATE__RELATIONS = REQUIREMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Post State Conditions</b></em>' containment reference list.
+   * The feature id for the '<em><b>Post State Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STATE__POST_STATE_CONDITIONS = REQUIREMENT_FEATURE_COUNT + 3;
+  int STATE__POST_STATE_CONDITION = REQUIREMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>STATE</em>' class.
@@ -1861,15 +1861,15 @@ public interface MoStMLPackage extends EPackage
   EReference getSTATE_Relations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mostml.moStML.STATE#getPostStateConditions <em>Post State Conditions</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.example.mostml.moStML.STATE#getPostStateCondition <em>Post State Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Post State Conditions</em>'.
-   * @see org.xtext.example.mostml.moStML.STATE#getPostStateConditions()
+   * @return the meta object for the containment reference '<em>Post State Condition</em>'.
+   * @see org.xtext.example.mostml.moStML.STATE#getPostStateCondition()
    * @see #getSTATE()
    * @generated
    */
-  EReference getSTATE_PostStateConditions();
+  EReference getSTATE_PostStateCondition();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mostml.moStML.CONSTRAINT <em>CONSTRAINT</em>}'.
@@ -3135,12 +3135,12 @@ public interface MoStMLPackage extends EPackage
     EReference STATE__RELATIONS = eINSTANCE.getSTATE_Relations();
 
     /**
-     * The meta object literal for the '<em><b>Post State Conditions</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Post State Condition</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference STATE__POST_STATE_CONDITIONS = eINSTANCE.getSTATE_PostStateConditions();
+    EReference STATE__POST_STATE_CONDITION = eINSTANCE.getSTATE_PostStateCondition();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mostml.moStML.impl.CONSTRAINTImpl <em>CONSTRAINT</em>}' class.

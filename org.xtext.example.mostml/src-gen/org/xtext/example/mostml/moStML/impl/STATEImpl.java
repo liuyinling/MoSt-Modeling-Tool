@@ -36,7 +36,7 @@ import org.xtext.example.mostml.moStML.STATECONDITON;
  *   <li>{@link org.xtext.example.mostml.moStML.impl.STATEImpl#getStateReqID <em>State Req ID</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.impl.STATEImpl#getPreStateConditions <em>Pre State Conditions</em>}</li>
  *   <li>{@link org.xtext.example.mostml.moStML.impl.STATEImpl#getRelations <em>Relations</em>}</li>
- *   <li>{@link org.xtext.example.mostml.moStML.impl.STATEImpl#getPostStateConditions <em>Post State Conditions</em>}</li>
+ *   <li>{@link org.xtext.example.mostml.moStML.impl.STATEImpl#getPostStateCondition <em>Post State Condition</em>}</li>
  * </ul>
  *
  * @generated
@@ -74,14 +74,14 @@ public class STATEImpl extends RequirementImpl implements STATE
   protected EList<RELATION> relations;
 
   /**
-   * The cached value of the '{@link #getPostStateConditions() <em>Post State Conditions</em>}' containment reference list.
+   * The cached value of the '{@link #getPostStateCondition() <em>Post State Condition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPostStateConditions()
+   * @see #getPostStateCondition()
    * @generated
    * @ordered
    */
-  protected EList<STATECONDITON> postStateConditions;
+  protected STATECONDITON postStateCondition;
 
   /**
    * <!-- begin-user-doc -->
@@ -190,13 +190,48 @@ public class STATEImpl extends RequirementImpl implements STATE
    * @generated
    */
   @Override
-  public EList<STATECONDITON> getPostStateConditions()
+  public STATECONDITON getPostStateCondition()
   {
-    if (postStateConditions == null)
+    return postStateCondition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPostStateCondition(STATECONDITON newPostStateCondition, NotificationChain msgs)
+  {
+    STATECONDITON oldPostStateCondition = postStateCondition;
+    postStateCondition = newPostStateCondition;
+    if (eNotificationRequired())
     {
-      postStateConditions = new EObjectContainmentEList<STATECONDITON>(STATECONDITON.class, this, MoStMLPackage.STATE__POST_STATE_CONDITIONS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MoStMLPackage.STATE__POST_STATE_CONDITION, oldPostStateCondition, newPostStateCondition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return postStateConditions;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPostStateCondition(STATECONDITON newPostStateCondition)
+  {
+    if (newPostStateCondition != postStateCondition)
+    {
+      NotificationChain msgs = null;
+      if (postStateCondition != null)
+        msgs = ((InternalEObject)postStateCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MoStMLPackage.STATE__POST_STATE_CONDITION, null, msgs);
+      if (newPostStateCondition != null)
+        msgs = ((InternalEObject)newPostStateCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MoStMLPackage.STATE__POST_STATE_CONDITION, null, msgs);
+      msgs = basicSetPostStateCondition(newPostStateCondition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MoStMLPackage.STATE__POST_STATE_CONDITION, newPostStateCondition, newPostStateCondition));
   }
 
   /**
@@ -215,8 +250,8 @@ public class STATEImpl extends RequirementImpl implements STATE
         return ((InternalEList<?>)getPreStateConditions()).basicRemove(otherEnd, msgs);
       case MoStMLPackage.STATE__RELATIONS:
         return ((InternalEList<?>)getRelations()).basicRemove(otherEnd, msgs);
-      case MoStMLPackage.STATE__POST_STATE_CONDITIONS:
-        return ((InternalEList<?>)getPostStateConditions()).basicRemove(otherEnd, msgs);
+      case MoStMLPackage.STATE__POST_STATE_CONDITION:
+        return basicSetPostStateCondition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -237,8 +272,8 @@ public class STATEImpl extends RequirementImpl implements STATE
         return getPreStateConditions();
       case MoStMLPackage.STATE__RELATIONS:
         return getRelations();
-      case MoStMLPackage.STATE__POST_STATE_CONDITIONS:
-        return getPostStateConditions();
+      case MoStMLPackage.STATE__POST_STATE_CONDITION:
+        return getPostStateCondition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -265,9 +300,8 @@ public class STATEImpl extends RequirementImpl implements STATE
         getRelations().clear();
         getRelations().addAll((Collection<? extends RELATION>)newValue);
         return;
-      case MoStMLPackage.STATE__POST_STATE_CONDITIONS:
-        getPostStateConditions().clear();
-        getPostStateConditions().addAll((Collection<? extends STATECONDITON>)newValue);
+      case MoStMLPackage.STATE__POST_STATE_CONDITION:
+        setPostStateCondition((STATECONDITON)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -292,8 +326,8 @@ public class STATEImpl extends RequirementImpl implements STATE
       case MoStMLPackage.STATE__RELATIONS:
         getRelations().clear();
         return;
-      case MoStMLPackage.STATE__POST_STATE_CONDITIONS:
-        getPostStateConditions().clear();
+      case MoStMLPackage.STATE__POST_STATE_CONDITION:
+        setPostStateCondition((STATECONDITON)null);
         return;
     }
     super.eUnset(featureID);
@@ -315,8 +349,8 @@ public class STATEImpl extends RequirementImpl implements STATE
         return preStateConditions != null && !preStateConditions.isEmpty();
       case MoStMLPackage.STATE__RELATIONS:
         return relations != null && !relations.isEmpty();
-      case MoStMLPackage.STATE__POST_STATE_CONDITIONS:
-        return postStateConditions != null && !postStateConditions.isEmpty();
+      case MoStMLPackage.STATE__POST_STATE_CONDITION:
+        return postStateCondition != null;
     }
     return super.eIsSet(featureID);
   }

@@ -24,7 +24,7 @@ MODE:
 
 STATE:
 	stateReqID=ReqID 'when' preStateConditions+=STATECONDITON (relations+=RELATION preStateConditions+=(STATECONDITON |
-	ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateConditions+=STATECONDITON* '.'
+	ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateCondition=STATECONDITON '.'
 ;
 
 CONSTRAINT:
@@ -151,7 +151,7 @@ MODECONDITION:
 ;
 
 ARITHMETICCONDITION:
-	ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2=ID
+	ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
 ;
 
 ARITHMETICOPERATOR:

@@ -309,18 +309,18 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cPreStateConditionsSIGNALCONDITIONParserRuleCall_3_1_0_3 = (RuleCall)cPreStateConditionsAlternatives_3_1_0.eContents().get(3);
 		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cThenKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cPostStateConditionsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cPostStateConditionsSTATECONDITONParserRuleCall_6_0 = (RuleCall)cPostStateConditionsAssignment_6.eContents().get(0);
+		private final Assignment cPostStateConditionAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cPostStateConditionSTATECONDITONParserRuleCall_6_0 = (RuleCall)cPostStateConditionAssignment_6.eContents().get(0);
 		private final Keyword cFullStopKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//STATE:
 		//    stateReqID=ReqID 'when' preStateConditions+=STATECONDITON (relations+=RELATION preStateConditions+=(STATECONDITON |
-		//    ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateConditions+=STATECONDITON* '.'
+		//    ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateCondition=STATECONDITON '.'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//stateReqID=ReqID 'when' preStateConditions+=STATECONDITON (relations+=RELATION preStateConditions+=(STATECONDITON |
-		//ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateConditions+=STATECONDITON* '.'
+		//ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateCondition=STATECONDITON '.'
 		public Group getGroup() { return cGroup; }
 		
 		//stateReqID=ReqID
@@ -374,11 +374,11 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//'then'
 		public Keyword getThenKeyword_5() { return cThenKeyword_5; }
 		
-		//postStateConditions+=STATECONDITON*
-		public Assignment getPostStateConditionsAssignment_6() { return cPostStateConditionsAssignment_6; }
+		//postStateCondition=STATECONDITON
+		public Assignment getPostStateConditionAssignment_6() { return cPostStateConditionAssignment_6; }
 		
 		//STATECONDITON
-		public RuleCall getPostStateConditionsSTATECONDITONParserRuleCall_6_0() { return cPostStateConditionsSTATECONDITONParserRuleCall_6_0; }
+		public RuleCall getPostStateConditionSTATECONDITONParserRuleCall_6_0() { return cPostStateConditionSTATECONDITONParserRuleCall_6_0; }
 		
 		//'.'
 		public Keyword getFullStopKeyword_7() { return cFullStopKeyword_7; }
@@ -1426,11 +1426,11 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cVar2IDTerminalRuleCall_6_0 = (RuleCall)cVar2Assignment_6.eContents().get(0);
 		
 		//ARITHMETICCONDITION:
-		//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2=ID
+		//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2=ID
+		//ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
 		public Group getGroup() { return cGroup; }
 		
 		//ID
@@ -1463,7 +1463,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		//ARITHMETICOPERATOR
 		public RuleCall getArithmeticOperatorARITHMETICOPERATORParserRuleCall_5_0() { return cArithmeticOperatorARITHMETICOPERATORParserRuleCall_5_0; }
 		
-		//var2=ID
+		//var2 = ID
 		public Assignment getVar2Assignment_6() { return cVar2Assignment_6; }
 		
 		//ID
@@ -2054,7 +2054,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	
 	//STATE:
 	//    stateReqID=ReqID 'when' preStateConditions+=STATECONDITON (relations+=RELATION preStateConditions+=(STATECONDITON |
-	//    ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateConditions+=STATECONDITON* '.'
+	//    ATTRIBUTECONTION | MODECONDITION | SIGNALCONDITION))* ',' 'then' postStateCondition=STATECONDITON '.'
 	//;
 	public STATEElements getSTATEAccess() {
 		return pSTATE;
@@ -2378,7 +2378,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//ARITHMETICCONDITION:
-	//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2=ID
+	//    ID result=ID (ID)* compcondition=COMPARISONOPERATOR var1=ID arithmeticOperator=ARITHMETICOPERATOR var2 = ID
 	//;
 	public ARITHMETICCONDITIONElements getARITHMETICCONDITIONAccess() {
 		return pARITHMETICCONDITION;
