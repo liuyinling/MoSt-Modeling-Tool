@@ -57,12 +57,16 @@ class NuSMVTextGenerator {
 	«getEnvironmentRequirements(root)»
 	«getModeTransitions(root)»
 	«getStates(root)»
+	«var indexSpeciStates = 0»
 	MODULE main
 	----------------Specification Definition-------------------
 	«FOR propertyReq: root.model.filter(PROPERTY)» 
 	«var indexPreProperties =0»
 	«var indexPostProperties =0»
 	SPEC «propertyReq.preOperator.logicOperator» (( «FOR prePropertyCondition: propertyReq.prePropertyConditions»«prePropertyCondition.condition»«IF indexPreProperties<=(propertyReq.preRelations.size-1)» «propertyReq.preRelations.get(indexPreProperties++).relation»«ENDIF» «ENDFOR» ) -> «propertyReq.postOperator.logicOperator» («FOR postPropertyCondition: propertyReq.postPropertyConditions»«postPropertyCondition.condition»«IF indexPostProperties<=(propertyReq.postRelations.size-1)» «propertyReq.postRelations.get(indexPostProperties++).relation» «ENDIF»«ENDFOR» ))--«propertyReq.propertyReqID.reqID»
+	«ENDFOR»
+	«FOR state: states.entrySet»
+	SPEC EF state=«state.key» «IF (indexSpeciStates++)<states.entrySet.size-1» «ENDIF»
 	«ENDFOR»
 	----------------Specification Definition-------------------
 	«var indexAttriStates = 0»
