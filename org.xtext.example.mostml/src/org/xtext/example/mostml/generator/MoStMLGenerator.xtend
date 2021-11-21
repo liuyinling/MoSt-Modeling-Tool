@@ -20,7 +20,7 @@ class MoStMLGenerator extends AbstractGenerator {
 		val reqs = resource.allContents.toIterable.filter(MoSt);
 		var count=1;
 		for(req:reqs){
-			fsa.generateFile( "Car"+count+".smv", NuSMVTextGenerator.toNuSMV(req));
+			fsa.generateFile("Car"+count+".smv", NuSMVTextGenerator.toNuSMV(req));
 			count=count+1;
 		}
 	

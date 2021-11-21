@@ -52,6 +52,7 @@ public class MoStMLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getATTRIBUTEVALUEAccess().getAlternatives(), "rule__ATTRIBUTEVALUE__Alternatives");
 			builder.put(grammarAccess.getBOOLEANTYPEAccess().getValueAlternatives_0(), "rule__BOOLEANTYPE__ValueAlternatives_0");
 			builder.put(grammarAccess.getSTATECONDITONAccess().getAlternatives(), "rule__STATECONDITON__Alternatives");
+			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getAlternatives_6(), "rule__ARITHMETICCONDITION__Alternatives_6");
 			builder.put(grammarAccess.getARITHMETICOPERATORAccess().getAlternatives(), "rule__ARITHMETICOPERATOR__Alternatives");
 			builder.put(grammarAccess.getCOMPARISONOPERATORAccess().getAlternatives(), "rule__COMPARISONOPERATOR__Alternatives");
 			builder.put(grammarAccess.getNLRequirementAccess().getGroup(), "rule__NLRequirement__Group__0");
@@ -108,7 +109,7 @@ public class MoStMLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSTATEAccess().getPreStateConditionsAssignment_2(), "rule__STATE__PreStateConditionsAssignment_2");
 			builder.put(grammarAccess.getSTATEAccess().getRelationsAssignment_3_0(), "rule__STATE__RelationsAssignment_3_0");
 			builder.put(grammarAccess.getSTATEAccess().getPreStateConditionsAssignment_3_1(), "rule__STATE__PreStateConditionsAssignment_3_1");
-			builder.put(grammarAccess.getSTATEAccess().getPostStateConditionsAssignment_6(), "rule__STATE__PostStateConditionsAssignment_6");
+			builder.put(grammarAccess.getSTATEAccess().getPostStateConditionAssignment_6(), "rule__STATE__PostStateConditionAssignment_6");
 			builder.put(grammarAccess.getCONSTRAINTAccess().getConstraintReqIDAssignment_0(), "rule__CONSTRAINT__ConstraintReqIDAssignment_0");
 			builder.put(grammarAccess.getCONSTRAINTAccess().getPreConstraintConditionsAssignment_2(), "rule__CONSTRAINT__PreConstraintConditionsAssignment_2");
 			builder.put(grammarAccess.getCONSTRAINTAccess().getRelationsAssignment_3_0(), "rule__CONSTRAINT__RelationsAssignment_3_0");
@@ -144,6 +145,7 @@ public class MoStMLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getATTRIBUTECONTIONAccess().getOperatorAssignment_4(), "rule__ATTRIBUTECONTION__OperatorAssignment_4");
 			builder.put(grammarAccess.getATTRIBUTECONTIONAccess().getAttributeValueAssignment_5(), "rule__ATTRIBUTECONTION__AttributeValueAssignment_5");
 			builder.put(grammarAccess.getATTRIBUTECONTIONAccess().getUnitAssignment_6(), "rule__ATTRIBUTECONTION__UnitAssignment_6");
+			builder.put(grammarAccess.getACCAccess().getAccAssignment(), "rule__ACC__AccAssignment");
 			builder.put(grammarAccess.getWEIGHTAccess().getWeightAssignment(), "rule__WEIGHT__WeightAssignment");
 			builder.put(grammarAccess.getTIMEAccess().getTimeAssignment(), "rule__TIME__TimeAssignment");
 			builder.put(grammarAccess.getSPEEDAccess().getSpeedAssignment(), "rule__SPEED__SpeedAssignment");
@@ -158,7 +160,8 @@ public class MoStMLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getCompconditionAssignment_3(), "rule__ARITHMETICCONDITION__CompconditionAssignment_3");
 			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getVar1Assignment_4(), "rule__ARITHMETICCONDITION__Var1Assignment_4");
 			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getArithmeticOperatorAssignment_5(), "rule__ARITHMETICCONDITION__ArithmeticOperatorAssignment_5");
-			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getVar2Assignment_6(), "rule__ARITHMETICCONDITION__Var2Assignment_6");
+			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getVar2Assignment_6_0(), "rule__ARITHMETICCONDITION__Var2Assignment_6_0");
+			builder.put(grammarAccess.getARITHMETICCONDITIONAccess().getVar3Assignment_6_1(), "rule__ARITHMETICCONDITION__Var3Assignment_6_1");
 			builder.put(grammarAccess.getMODULEAccess().getAddAssignment_0(), "rule__MODULE__AddAssignment_0");
 			builder.put(grammarAccess.getDIVISIONAccess().getDivisionAssignment_0(), "rule__DIVISION__DivisionAssignment_0");
 			builder.put(grammarAccess.getMULTIPLICATIONAccess().getMultiplicationAssignment_0(), "rule__MULTIPLICATION__MultiplicationAssignment_0");

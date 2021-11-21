@@ -344,10 +344,10 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 * Constraint:
 	 *     (
 	 *         constraintReqID=ReqID 
-	 *         preConstraintConditions+=SIGNALCONDITION? 
+	 *         preConstraintConditions+=ATTRIBUTECONTION? 
 	 *         (
-	 *             (preConstraintConditions+=STATECONDITON | preConstraintConditions+=ATTRIBUTECONTION | preConstraintConditions+=MODECONDITION)? 
-	 *             preConstraintConditions+=SIGNALCONDITION?
+	 *             (preConstraintConditions+=STATECONDITON | preConstraintConditions+=MODECONDITION | preConstraintConditions+=SIGNALCONDITION)? 
+	 *             preConstraintConditions+=ATTRIBUTECONTION?
 	 *         )* 
 	 *         (
 	 *             relations+=RELATION 

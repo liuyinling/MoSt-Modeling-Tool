@@ -39,7 +39,17 @@ import org.xtext.example.mostml.moStML.EG
 import org.xtext.example.mostml.moStML.F
 import org.xtext.example.mostml.moStML.G
 import org.xtext.example.mostml.moStML.X
+import java.nio.file.Paths
+import java.nio.file.Files
 
+/**
+ * It is very important to understand how the Validator works!!
+ * It will check all the user-defined rules once we modify the model!
+ * NuSMV proposed errors are either added to some requirements or added to properties requirements as warning.
+ * How to use NuSMV check? press "space", save the file, then press "space". Sometimes, the generated NuSMV is not immediately updated!
+ * @author Yinling LIU
+ * @date 21/11/2021
+ */
 class MoStMLValidator extends AbstractMoStMLValidator {
 	
 	public static val INVALID_ReqID = "invalidName";
@@ -49,6 +59,10 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 	public static HashMap<String,String> modeReqs = new HashMap<String, String> ();
 	public static HashMap<String,String> propertyReqs = new HashMap<String, String> ();
 	public static HashMap<String,String> constraintReqs = new HashMap<String, String> ();
+	public static NuSMV nusmv = new NuSMV();
+    public static HashMap<String,String> progErrors = new HashMap<String, String> ();
+    public static HashMap<String,String> propErrors = new HashMap<String, String> ();
+
 	@Check
 	def void main(MoSt most){
 		reqIDs.clear; // to avoid that same information is added to reqIDs
@@ -57,6 +71,8 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		modeReqs.clear;
 		propertyReqs.clear;
 		constraintReqs.clear;
+		progErrors.clear;
+		propErrors.clear;
 		for(envirReq: most.model.filter(Environment)){
 			// initialize envirVariables
 			if(envirReq.envirVariable!==null && !envirVariables.containsKey(envirReq.envirVariable)){
@@ -77,6 +93,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		for(stateReq: most.model.filter(STATE)){
 			getRequirement(stateReq);
 		}
+	
 		for(modeReq: most.model.filter(MODE)){
 			getRequirement(modeReq);
 		}
@@ -86,16 +103,25 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		for(propertyReq: most.model.filter(PROPERTY)){
 			getRequirement(propertyReq);
 		}
-		
+	    nusmv.executeNuSMV();
+	    nusmv.analyseResult();
+	    println("111111111111111111111111")
+	    for(programE:nusmv.programErrors.entrySet)
+	    	println(programE.key+";"+programE.value);
+	    println("222222222222222222222222")
+	    for(propertyE:nusmv.propertyErrors.entrySet)
+	    	println(propertyE.key+";"+propertyE.value);
+	    progErrors = nusmv.programErrors;
+	    propErrors = nusmv.propertyErrors;
+
 	}
-	
+
 	@Check
 	def void checkModeName(MODECONDITION modeCondition){
 		if(modeCondition.getModeName().charAt(0)<='Z'&&modeCondition.getModeName().charAt(0)>='A'){
 			error("Mode name should start with a lower case"+": error '"+modeCondition.getModeName().charAt(0)+"'",
 					  MoStMLPackage.Literals.MODECONDITION__MODE_NAME,INVALID_ReqID);
-		}	
-		
+		}			
 	}
 	
 	
@@ -129,7 +155,12 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 					  MoStMLPackage.Literals.MODE__MODE_REQ_ID,INVALID_ReqID);
 		}
 		else
-			reqIDs.put(mode.getModeReqID().getReqID().toString(),"");		
+			reqIDs.put(mode.getModeReqID().getReqID().toString(),"");
+		if(progErrors.containsKey(mode.getModeReqID().getReqID().toString())){
+			error(progErrors.get(mode.getModeReqID().getReqID().toString())+"'"+mode.getModeReqID().getReqID().toString()+"'",
+					  MoStMLPackage.Literals.MODE__MODE_REQ_ID,INVALID_ReqID);
+		}
+				
 	}
 	
 	@Check
@@ -140,6 +171,10 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		}
 		else
 			reqIDs.put(state.getStateReqID().getReqID().toString(),"");	
+		if(progErrors.containsKey(state.getStateReqID().getReqID().toString())){
+			error(progErrors.get(state.getStateReqID().getReqID().toString())+"'"+state.getStateReqID().getReqID().toString()+"'",
+					  MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
+		}
 	}
 	@Check
 	def void loadPropertyIDs(PROPERTY property){
@@ -149,6 +184,12 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		}
 		else
 			reqIDs.put(property.getPropertyReqID().getReqID().toString(),"");	
+		//if some properties are not satisfied, warnings will be prompted up showing the counter-examples!	
+		if(propErrors.containsKey(property.getPropertyReqID().getReqID().toString())){
+			warning(propErrors.get(property.getPropertyReqID().getReqID().toString())+"'"+property.getPropertyReqID().getReqID().toString()+"'",
+					  MoStMLPackage.Literals.PROPERTY__PROPERTY_REQ_ID,INVALID_ReqID);
+		}
+		
 	}
 	@Check
 	def void loadConstraintIDs(CONSTRAINT constraint){
@@ -157,7 +198,12 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 					  MoStMLPackage.Literals.CONSTRAINT__CONSTRAINT_REQ_ID,INVALID_ReqID);
 		}
 		else
-			reqIDs.put(constraint.getConstraintReqID().getReqID().toString(),"");	
+			reqIDs.put(constraint.getConstraintReqID().getReqID().toString(),"");
+			
+		if(progErrors.containsKey(constraint.getConstraintReqID().getReqID().toString())){
+			error(progErrors.get(constraint.getConstraintReqID().getReqID().toString())+"'"+constraint.getConstraintReqID().getReqID().toString()+"'",
+					  MoStMLPackage.Literals.CONSTRAINT__CONSTRAINT_REQ_ID,INVALID_ReqID);
+		}	
 	}
 	@Check
 	def void loadNLReqIDs(NLRequirement nlReq){
@@ -180,6 +226,11 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		else {
 			reqIDs.put(envir.getEnvirReqID().getReqID().toString(),"");	
 		}
+	
+		if(progErrors.containsKey(envir.getEnvirReqID().getReqID().toString())){
+			error(progErrors.get(envir.getEnvirReqID().getReqID().toString())+"'"+envir.getEnvirReqID().getReqID().toString()+"'",
+					  MoStMLPackage.Literals.ENVIRONMENT__ENVIR_REQ_ID,INVALID_ReqID);
+		}
 	}
 	
 	@Check
@@ -200,7 +251,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 			}
 			
 			if(envirVariables.get(envir.envirVariable)>2){
-					error("You may have repeat this environment requirements. "+"'"+envir.envirVariable+"'",
+					error("You may have repeated this environment requirements. "+"'"+envir.envirVariable+"'",
 					  MoStMLPackage.Literals.ENVIRONMENT__ENVIR_VARIABLE,INVALID_ReqID);
 				}
 			
@@ -233,6 +284,14 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 			}
 		}
 		
+		// propose errors to state requirements, these errors are generated because automatically generated properties are false.
+		if(propErrors.containsKey(stateReq.postStateCondition.condition.trim)){
+			
+			error("This state can't be reached "+stateReq.postStateCondition.condition+"\n"+propErrors.get(stateReq.postStateCondition.condition.trim),
+					  MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
+		}
+		
+		
 		
 	}
 	@Check
@@ -263,7 +322,36 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		}
 		
 	}
-	
+	@Check
+	def void checkExistencyOfConditionInStateRequirement(STATE stateReq){
+		var name="";
+		var type="";
+		println("@@@@@@@@@@@@@@@@");
+		for(precondition:stateReq.preStateConditions){
+		
+				//check attribute condition
+				type = precondition.variableNameOfStateRequirement.split("=").get(0)
+				name = precondition.variableNameOfStateRequirement.split("=").get(1)
+				println(type+";"+name)
+				
+				if(type.trim.equals("attribute")){
+					println("&&&&")
+					if(!envirVariables.containsKey(name.trim)){
+						/* 
+						println("???"+envirVariables.get(name.trim))
+						if(envirVariables.get(name.trim).equals(0)){
+							error("The requirement of this attribute is missing. ",
+					       		MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
+					       
+					     }*/
+					     error("The requirement of attribute" +name+" is missing. ",
+					       		MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
+					}
+				}
+
+		}
+		println("@@@@@@@@@@@@@@@@");
+	}	
 	@Check
 	def void checkConstraintCondition(CONSTRAINT constraintReq){
 		var tempPreCondition="";
@@ -336,18 +424,41 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 			attributeCondition.attributeName+attributeCondition.operator.operator+ attributeCondition.attributeValue.attributeValue		 	
 		 
 	}	
+	
 
+	def  dispatch static getCondition(ARITHMETICCONDITION arithmeticCondition){
+		if(arithmeticCondition!==null) arithmeticCondition.result+arithmeticCondition.compcondition.operator+arithmeticCondition.var1+arithmeticCondition.arithmeticOperator.arithmeticOperator+arithmeticCondition.var2
+	}	
+	
 	def  dispatch static getCondition(SIGNALCONDITION signalCondition){
 		if(signalCondition!==null){
 			
 			 "action = "+signalCondition.signalName	
 		}
 	}
-	def  dispatch static getCondition(ARITHMETICCONDITION arithmeticCondition){
-		if(arithmeticCondition!==null) arithmeticCondition.result+arithmeticCondition.compcondition.operator+arithmeticCondition.var1+arithmeticCondition.arithmeticOperator.arithmeticOperator+arithmeticCondition.var2
+
+	
+	def dispatch static getVariableNameOfStateRequirement(ATTRIBUTECONTION attributeCondition){
+			"attribute = "+attributeCondition.attributeName 		 
 	}	
 	
-		def static dispatch getOperator(LESS less){
+	def dispatch static getVariableNameOfStateRequirement(STATECONDITON stateCondition){
+			"state = "+stateCondition.stateName		 
+	}	
+	
+	def dispatch static getVariableNameOfStateRequirement(MODECONDITION modeCondition){
+			"mode = "+modeCondition.modeName		 
+	}	
+
+	def dispatch static getVariableNameOfStateRequirement(ARITHMETICCONDITION arithmeticCondition){
+			"arithmetic = "+arithmeticCondition.result		 
+	}	
+	
+	def dispatch static getVariableNameOfStateRequirement(SIGNALCONDITION signalCondition){
+			"signal = "+signalCondition.signalName		 
+	}
+	
+	def static dispatch getOperator(LESS less){
 		if(less!==null) "<"
 	}
 	
@@ -460,6 +571,9 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		if(stateReq.postStateCondition!==null){
 			tempPostCondition+=	stateReq.postStateCondition.condition;
 		}
+		//first of all, we need to check the preconditions of the state condition are correctly formulated.
+		
+		
 		if(stateReqs.containsKey(tempPreCondition)){
 			if(stateReqs.get(tempPreCondition).equals(tempPostCondition)){
 				stateReqs.put(tempPreCondition,"repeat");//repeat requirements

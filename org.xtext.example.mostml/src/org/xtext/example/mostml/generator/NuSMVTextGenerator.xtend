@@ -63,7 +63,7 @@ class NuSMVTextGenerator {
 	«FOR propertyReq: root.model.filter(PROPERTY)» 
 	«var indexPreProperties =0»
 	«var indexPostProperties =0»
-	SPEC «propertyReq.preOperator.logicOperator» (( «FOR prePropertyCondition: propertyReq.prePropertyConditions»«prePropertyCondition.condition»«IF indexPreProperties<=(propertyReq.preRelations.size-1)» «propertyReq.preRelations.get(indexPreProperties++).relation»«ENDIF» «ENDFOR» ) -> «propertyReq.postOperator.logicOperator» («FOR postPropertyCondition: propertyReq.postPropertyConditions»«postPropertyCondition.condition»«IF indexPostProperties<=(propertyReq.postRelations.size-1)» «propertyReq.postRelations.get(indexPostProperties++).relation» «ENDIF»«ENDFOR» ))--«propertyReq.propertyReqID.reqID»
+	SPEC «propertyReq.preOperator.logicOperator» ((«FOR prePropertyCondition: propertyReq.prePropertyConditions»«prePropertyCondition.condition»«IF indexPreProperties<=(propertyReq.preRelations.size-1)»«propertyReq.preRelations.get(indexPreProperties++).relation»«ENDIF»«ENDFOR») -> «propertyReq.postOperator.logicOperator» «FOR postPropertyCondition: propertyReq.postPropertyConditions»«postPropertyCondition.condition»«IF indexPostProperties<=(propertyReq.postRelations.size-1)» «propertyReq.postRelations.get(indexPostProperties++).relation» «ENDIF»«ENDFOR»)--«propertyReq.propertyReqID.reqID»
 	«ENDFOR»
 	«FOR state: states.entrySet»
 	SPEC EF state=«state.key» «IF (indexSpeciStates++)<states.entrySet.size-1» «ENDIF»
@@ -152,9 +152,16 @@ class NuSMVTextGenerator {
 				//mode = A, signal =B, mode = BB
 				temp+=":"+modeReq.postModeCondition.condition.split("=").get(1)+";";
 				println("mode transition = "+temp);	
-					modeTransitions.put(temp.split("&").get(0),temp.split("&").get(1)+"--"+modeReq.modeReqID.reqID);	
+				//modeTransitions.put(temp.split("&").get(0),temp.split("&").get(1)+"--"+modeReq.modeReqID.reqID);	
+				                                          // the subtraction of string
+				modeTransitions.put(temp.split("&").get(0),temp.replaceAll(temp.split("&").get(0),"").trim.substring(1)+"--"+modeReq.modeReqID.reqID);	
+				
 			}
 			temp="";
+			
+		}
+		for(modeTransition:modeTransitions.entrySet){
+			println("$$$$"+modeTransition.key+" value:"+modeTransition.value);
 			
 		}
 		
@@ -197,8 +204,8 @@ class NuSMVTextGenerator {
 	}
 		
 	def static getRelation(RELATION re){
-		if(re.relaion.trim.equals("and")) "&"
-		else if(re.relaion.toString.trim.equals("or")) "|"
+		if(re.relaion.trim.equals("and")) " & "
+		else if(re.relaion.toString.trim.equals("or")) " | "
 		else ""
 	}
 	// a set of dispatch methods
