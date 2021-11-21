@@ -240,7 +240,7 @@ public class NuSMV{
 			    	//We need to store "state = accelerate".
 			    	String[] autoSpecs = null;
 			    	String right = null;
-			    	if(reqID[i]==null) {
+			    	if(reqID[i]==null) {//the automated properties don't have requirements ID.
 			    		autoSpecs = counterexample[i][1].trim().split("EF");
 			    		if(autoSpecs.length > 0) {
 			    			right = autoSpecs[1].trim();
