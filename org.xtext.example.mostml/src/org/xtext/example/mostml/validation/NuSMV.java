@@ -19,6 +19,9 @@ import java.util.Scanner;
  * This class is the engine for calling NuSMV model checker from Java code.
  * It deals with text files as well.
  * we used HashMap programErrors and propertyErrors to stored error information which will be used by the Validator.
+ * For analysing the simulation results, the difficulties lie in the program errors. Because the format of the simulation results
+ * are different. We do have to design a specific method for each kind of errors.
+ * We leave an interface printing a self-explainable message when an error of new type arise.
  * Note we use "space" to trigger the call of NuSMV. Since NuSMV propose non-parser analysis one by one, so
  * we need to press "space" very often to see the proposed errors (all the other errors) or warnings (specification is false).
  * @author Yinling LIU
@@ -58,14 +61,18 @@ public class NuSMV{
 				sb.append(str + "\n");
 				str = brInput.readLine();
 			}
-			System.out.println("sb"+sb); //sb stores all the output of NuSMV.
-			
+			System.err.println("******************************************************");
+			System.out.println("Input stream : "+sb); //sb stores all the output of NuSMV.
+			System.err.println("******************************************************");
 			str = brError.readLine();
 			while (str != null) {
 				result.append(str + "\n");
 				sb.append(str + "\n");
 				str = brError.readLine();
 			}
+			System.err.println("******************************************************");
+			System.out.println("Input + Error streams:"+sb); //sb stores all the output of NuSMV.
+			System.err.println("******************************************************");
 		/*****************************read data from nusmv******************************/
 		
 		/*****************************write data to result.txt**************************/
@@ -132,10 +139,11 @@ public class NuSMV{
 			//why errorLocation and errorInfo are not arrays?
 			//because only syntax errors info contains many file-prefixed error info in NuSMV.
 			//other errors are pop up just up one by one.
-			System.out.println("An error occurred: "+errorLocation+":"+errorInfo);
+			System.err.println("An error occurred: "+errorLocation+":"+errorInfo);
 			// look for ReqID
 			String[] reqOfProgramError = null;
 			String ID = null;
+			String [] program = new String[100];
 			try {
 				counter = 0; //This is an example about requirements: state = accelerate & accSpeed=5:speed/0;--[2, 1, 3]
 				             //The aim is to show how we can get requirement ID [2, 1, 3].
@@ -148,12 +156,42 @@ public class NuSMV{
 				}
 				Scanner myReader = new Scanner(myObj);
 			    while (myReader.hasNextLine()&& errorLocation!=null) {
-			    	counter++;
 			    	data = myReader.nextLine();
+			    	program[counter] = data;
+			    	counter++;	  
 			    	if(counter == Integer.parseInt(errorLocation)) { //just count the lines of code, which is rather easy!!
-			    		reqOfProgramError = data.split("--");
-			    		ID = reqOfProgramError[1]; //[2, 1, 3]
-			    		break;
+			    		if(data.contains("--")) {
+				    		reqOfProgramError = data.split("--");
+				    		ID = reqOfProgramError[1]; //[2, 1, 3]
+			    		}
+			    		else{ // no special symbol can be used
+			    			  // when error info is like line 79: cannot assign value 105 to variable speed
+				    		  // but line 79 doesn't relate to one of requirements in the MoSt model
+			    			if(errorInfo.contains("variable")) {
+			    				reqOfProgramError = errorInfo.split("variable");
+				    			if(reqOfProgramError.length>=2) {
+				    				ID = reqOfProgramError[1].trim(); //"speed"
+				    			}
+			    			}
+			    			else if(errorInfo.contains("case")) {
+			    				// line 44 : illegal types of "case" list elements : integer and boolean
+			    				// TRUE: displaySpeed;
+			    				// esac;
+			    				// search the last line
+			    				if(counter>=2) {
+			    					reqOfProgramError = program[counter-2].split(":");
+					    			if(reqOfProgramError.length>=2) {
+					    				ID = reqOfProgramError[1].substring(0,reqOfProgramError[1].length()-2).trim(); // remove ";" to get displaySpeed
+					    			}
+			    				}
+			    			}
+			    			else {
+			    				
+				    			System.err.println("This type of program errors we hasn't considered, please report it to the developer: "+ errorInfo);
+				    			ID = "not considered, please update the error type!";
+				    		}		    			
+			    		}	
+			    		
 			    	}
 			      }
 			      myReader.close();

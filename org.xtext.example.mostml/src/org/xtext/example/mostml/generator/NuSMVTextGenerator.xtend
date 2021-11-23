@@ -40,7 +40,13 @@ import org.xtext.example.mostml.moStML.DIVISION
 import java.util.HashMap
 import org.xtext.example.mostml.moStML.MODE
 import org.xtext.example.mostml.moStML.ACC
-
+/**
+ * According to the mapping of components between the MoSt model and the NuSMV,
+ * the translation process is rather straightforward. Most of the time, we
+ * are manipulating strings, including tailoring, concatenating, appending, etc.
+ * @author Yinling LIU
+ * @date 21/11/2021
+ */
 class NuSMVTextGenerator {
 	// Environment Requirement: the speed of the car should less than 100 km/h.
 	

@@ -269,6 +269,12 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 			else{
 				tempPreCondition+=precondition.condition;
 			}
+			// since we are not sure there more than one state condition of which we delete, we have to check the preconditions
+			// because the only exising state condition is deleted. There is nothing to compare with.
+			if(propErrors.containsKey(precondition.condition.trim)){
+				error("This state can't be reached "+precondition.condition+"\n"+propErrors.get(precondition.condition.trim),
+					  MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
+		}
 		}
 		if(stateReqs.containsKey(tempPreCondition)){
 			if(stateReqs.get(tempPreCondition).equals("repeat")){
@@ -286,7 +292,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 		
 		// propose errors to state requirements, these errors are generated because automatically generated properties are false.
 		if(propErrors.containsKey(stateReq.postStateCondition.condition.trim)){
-			
+			System.err.println("state reqs: "+stateReq.postStateCondition.condition.trim)
 			error("This state can't be reached "+stateReq.postStateCondition.condition+"\n"+propErrors.get(stateReq.postStateCondition.condition.trim),
 					  MoStMLPackage.Literals.STATE__STATE_REQ_ID,INVALID_ReqID);
 		}
@@ -364,6 +370,19 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 			}
 			else{
 				tempPreCondition+=precondition.condition;
+			}
+			//to check whether there exists assignment problems to the variables.
+			System.err.println(precondition.condition)
+			for(progError:progErrors.entrySet){
+				if(precondition.condition.contains(progError.key)){// it should be attribute conditions.
+					error(progError.value,MoStMLPackage.Literals.CONSTRAINT__CONSTRAINT_REQ_ID,INVALID_ReqID);
+				}
+			}
+		}
+		//to check illegal operand type
+		for(progError:progErrors.entrySet){
+			if(constraintReq.postConstraintCondition.condition.contains(progError.key)){// it should be attribute conditions.
+				error(progError.value,MoStMLPackage.Literals.CONSTRAINT__CONSTRAINT_REQ_ID,INVALID_ReqID);
 			}
 		}
 		attribute=constraintReq.postConstraintCondition.condition.split("=").get(0);
