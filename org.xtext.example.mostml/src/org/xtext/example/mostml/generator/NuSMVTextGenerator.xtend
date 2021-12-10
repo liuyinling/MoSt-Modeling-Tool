@@ -99,7 +99,7 @@ class NuSMVTextGenerator {
 	  	  init(«constraintMap.key»):= «IF constraintMap.value.split("@").get(0)!==null»«constraintMap.value.split("@").get(0)»«ENDIF»
 	  	  next(«constraintMap.key»):=
 	  	    case
-    	    	«IF constraintMap.value.contains("@")»
+    	    	«IF constraintMap.value.contains("@") && constraintMap.value.split("@").size > 1»
     	    	«FOR condition: constraintMap.value.split("@").get(1).split("#")»
     	    	«IF condition!==""»«condition»«ENDIF»
     	    	«ENDFOR»
@@ -109,6 +109,7 @@ class NuSMVTextGenerator {
 		«ENDFOR»
 
 		ASSIGN
+		«IF root.model.filter(MODE).size >0 »
 		init(mode):=«root.model.filter(MODE).get(0).preModeConditions.get(0).condition.split("=").get(1)»;
 		next(mode):=
 		  case
@@ -117,6 +118,7 @@ class NuSMVTextGenerator {
 			«ENDFOR»
 			TRUE:mode;
 		  esac;
+		  «ENDIF»
 	'''
 	def static HashMap<String,String> getConstraintRequirements(MoSt root){
 		var String temp="";
