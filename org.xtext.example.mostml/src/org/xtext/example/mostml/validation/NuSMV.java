@@ -35,7 +35,7 @@ public class NuSMV{
 	public String NUSMV_EXECUTE_PATH =  "/Users/liu/Documents/Logiciel/NuSMV-2.6.0-Darwin/bin/NuSMV";
 	public String RESULT_FILE_PATH ="/Users/liu/runtime-EclipseXtext/Example/src-gen/result.txt";
 	public void executeNuSMV() {
-  
+    
 		/*****************************call nusmv****************************************/
 		List<String> cmdLine = new ArrayList<String>();
 		cmdLine.add(NUSMV_EXECUTE_PATH);
