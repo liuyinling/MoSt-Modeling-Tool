@@ -22,7 +22,7 @@ If you successfully clone this project, you will see 5 Xtext projects in your Pa
 - Right click on project org.xtext.example.mostml, choose "Run as" -> "Eclipse Application" (you will see a new eclipse opening up);
 - New a project;
 - New a file with extension name ".mostml".
-- Copy the code from Requirements.rtf (from GitHub).
+- Copy the code from Requirements.txt (from GitHub).
 - The corresponding NuSMV file will be automatically generated in folder src-gen with a file named Car1.smv.
 ### Using instructions:
 - Write requirements in the editor;
