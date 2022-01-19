@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-
 /**
  * This class is the engine for calling NuSMV model checker from Java code.
  * It deals with text files as well.
@@ -82,7 +81,7 @@ public class NuSMV{
 			e.printStackTrace();
 		}
 		
-	}
+	} 
 
 	/**
 	 * This method is one of the most important methods for analyzing the text.
