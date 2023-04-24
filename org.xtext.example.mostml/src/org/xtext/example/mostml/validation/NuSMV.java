@@ -30,9 +30,20 @@ public class NuSMV{
 
 	public HashMap<String,String> programErrors = new HashMap<String, String> ();
 	public HashMap<String,String> propertyErrors = new HashMap<String, String> ();
-	public String GENERATED_SMV_FILE_PATH = "/Users/liu/runtime-EclipseXtext/Example/src-gen/Car1.smv";
-	public String NUSMV_EXECUTE_PATH =  "/Users/liu/Documents/Logiciel/NuSMV-2.6.0-Darwin/bin/NuSMV";
-	public String RESULT_FILE_PATH ="/Users/liu/runtime-EclipseXtext/Example/src-gen/result.txt";
+	public String GENERATED_SMV_FILE_PATH;
+	public String NUSMV_EXECUTE_PATH;
+	public String RESULT_FILE_PATH;
+//	public String GENERATED_SMV_FILE_PATH = "/Users/liu/runtime-EclipseXtext/Example/src-gen/Car1.smv";
+//	public String NUSMV_EXECUTE_PATH =  "/Users/liu/Documents/Logiciel/NuSMV-2.6.0-Darwin/bin/NuSMV";
+//	public String RESULT_FILE_PATH ="/Users/liu/runtime-EclipseXtext/Example/src-gen/result.txt";
+	
+	public NuSMV(String GENERATED_SMV_FILE_PATH, String NUSMV_EXECUTE_PATH, String RESULT_FILE_PATH) {
+		this.GENERATED_SMV_FILE_PATH = GENERATED_SMV_FILE_PATH;
+		this.NUSMV_EXECUTE_PATH = NUSMV_EXECUTE_PATH;
+		this.RESULT_FILE_PATH = RESULT_FILE_PATH;	
+	}
+	
+	
 	public void executeNuSMV() {
     
 		/*****************************call nusmv****************************************/
@@ -350,9 +361,9 @@ public class NuSMV{
 	}
 	
 	public static void main(String args[]) {
-		NuSMV nusmv = new NuSMV();
-		nusmv.executeNuSMV();
-		nusmv.analyseResult();
+	//	NuSMV nusmv = new NuSMV();
+	//	nusmv.executeNuSMV();
+	//	nusmv.analyseResult();
 	}
 }
 

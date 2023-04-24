@@ -18,10 +18,11 @@ class MoStMLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val reqs = resource.allContents.toIterable.filter(MoSt);
-		var count=1;
+		var String temp = resource.URI.toString.substring(27);
+		var String smvName = temp.substring(0,temp.length-7);
+
 		for(req:reqs){
-			fsa.generateFile("Car"+count+".smv", NuSMVTextGenerator.toNuSMV(req));
-			count=count+1;
+			fsa.generateFile(smvName+".smv", NuSMVTextGenerator.toNuSMV(req));
 		}
 	
 	}

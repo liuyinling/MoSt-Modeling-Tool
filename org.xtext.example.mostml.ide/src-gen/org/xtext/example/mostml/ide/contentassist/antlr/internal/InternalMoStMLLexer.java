@@ -804,10 +804,10 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7167:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalMoStML.g:7167:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMoStML.g:7194:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalMoStML.g:7194:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalMoStML.g:7167:11: ( '^' )?
+            // InternalMoStML.g:7194:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -816,7 +816,7 @@ public class InternalMoStMLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalMoStML.g:7167:11: '^'
+                    // InternalMoStML.g:7194:11: '^'
                     {
                     match('^'); 
 
@@ -834,7 +834,7 @@ public class InternalMoStMLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalMoStML.g:7167:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalMoStML.g:7194:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -883,10 +883,10 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7169:10: ( ( '0' .. '9' )+ )
-            // InternalMoStML.g:7169:12: ( '0' .. '9' )+
+            // InternalMoStML.g:7196:10: ( ( '0' .. '9' )+ )
+            // InternalMoStML.g:7196:12: ( '0' .. '9' )+
             {
-            // InternalMoStML.g:7169:12: ( '0' .. '9' )+
+            // InternalMoStML.g:7196:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -900,7 +900,7 @@ public class InternalMoStMLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalMoStML.g:7169:13: '0' .. '9'
+            	    // InternalMoStML.g:7196:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -932,10 +932,10 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7171:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalMoStML.g:7171:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMoStML.g:7198:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalMoStML.g:7198:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalMoStML.g:7171:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalMoStML.g:7198:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -953,10 +953,10 @@ public class InternalMoStMLLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalMoStML.g:7171:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalMoStML.g:7198:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalMoStML.g:7171:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalMoStML.g:7198:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -972,7 +972,7 @@ public class InternalMoStMLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalMoStML.g:7171:21: '\\\\' .
+                    	    // InternalMoStML.g:7198:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -980,7 +980,7 @@ public class InternalMoStMLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMoStML.g:7171:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalMoStML.g:7198:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1005,10 +1005,10 @@ public class InternalMoStMLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalMoStML.g:7171:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalMoStML.g:7198:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalMoStML.g:7171:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalMoStML.g:7198:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1024,7 +1024,7 @@ public class InternalMoStMLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalMoStML.g:7171:54: '\\\\' .
+                    	    // InternalMoStML.g:7198:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1032,7 +1032,7 @@ public class InternalMoStMLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalMoStML.g:7171:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalMoStML.g:7198:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1075,12 +1075,12 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7173:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalMoStML.g:7173:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalMoStML.g:7200:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalMoStML.g:7200:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalMoStML.g:7173:24: ( options {greedy=false; } : . )*
+            // InternalMoStML.g:7200:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1105,7 +1105,7 @@ public class InternalMoStMLLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalMoStML.g:7173:52: .
+            	    // InternalMoStML.g:7200:52: .
             	    {
             	    matchAny(); 
 
@@ -1135,12 +1135,12 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7175:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalMoStML.g:7175:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalMoStML.g:7202:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalMoStML.g:7202:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalMoStML.g:7175:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalMoStML.g:7202:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1153,7 +1153,7 @@ public class InternalMoStMLLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalMoStML.g:7175:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalMoStML.g:7202:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1173,7 +1173,7 @@ public class InternalMoStMLLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalMoStML.g:7175:40: ( ( '\\r' )? '\\n' )?
+            // InternalMoStML.g:7202:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1182,9 +1182,9 @@ public class InternalMoStMLLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalMoStML.g:7175:41: ( '\\r' )? '\\n'
+                    // InternalMoStML.g:7202:41: ( '\\r' )? '\\n'
                     {
-                    // InternalMoStML.g:7175:41: ( '\\r' )?
+                    // InternalMoStML.g:7202:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1193,7 +1193,7 @@ public class InternalMoStMLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalMoStML.g:7175:41: '\\r'
+                            // InternalMoStML.g:7202:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1225,10 +1225,10 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7177:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalMoStML.g:7177:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMoStML.g:7204:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalMoStML.g:7204:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalMoStML.g:7177:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalMoStML.g:7204:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1282,8 +1282,8 @@ public class InternalMoStMLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalMoStML.g:7179:16: ( . )
-            // InternalMoStML.g:7179:18: .
+            // InternalMoStML.g:7206:16: ( . )
+            // InternalMoStML.g:7206:18: .
             {
             matchAny(); 
 

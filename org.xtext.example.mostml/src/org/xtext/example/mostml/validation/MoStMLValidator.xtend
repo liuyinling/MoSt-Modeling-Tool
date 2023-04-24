@@ -59,13 +59,22 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 	public static HashMap<String,String> modeReqs = new HashMap<String, String> ();
 	public static HashMap<String,String> propertyReqs = new HashMap<String, String> ();
 	public static HashMap<String,String> constraintReqs = new HashMap<String, String> ();
-	public static NuSMV nusmv = new NuSMV();
+	public static NuSMV nusmv ;
     public static HashMap<String,String> progErrors = new HashMap<String, String> ();
     public static HashMap<String,String> propErrors = new HashMap<String, String> ();
 
 	@Check
 	def void main(MoSt most){
 		reqIDs.clear; // to avoid that same information is added to reqIDs
+		
+		var String [] temp = most.eResource.URI.toString.split("/");
+		var String projectName = temp.get(2);
+		var String fileName = temp.get(3).substring(0,temp.get(3).length-7);
+		var String GENERATED_SMV_FILE_PATH = "/Users/liu/runtime-EclipseXtext/"+projectName+"/src-gen/"+fileName+".smv";
+		var String NUSMV_EXECUTE_PATH =  "/Users/liu/Documents/Logiciel/NuSMV-2.6.0-Darwin/bin/NuSMV";
+		var String RESULT_FILE_PATH ="/Users/liu/runtime-EclipseXtext/"+projectName+"/src-gen/"+fileName+"_result.txt";
+		nusmv = new NuSMV(GENERATED_SMV_FILE_PATH, NUSMV_EXECUTE_PATH, RESULT_FILE_PATH);
+		
 		envirVariables.clear;
 		stateReqs.clear;
 		modeReqs.clear;
