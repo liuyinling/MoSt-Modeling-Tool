@@ -67,6 +67,7 @@ class MoStMLValidator extends AbstractMoStMLValidator {
 	def void main(MoSt most){
 		reqIDs.clear; // to avoid that same information is added to reqIDs
 		
+		//This is to generalize the names of generated .smv files and result.txt files.
 		var String [] temp = most.eResource.URI.toString.split("/");
 		var String projectName = temp.get(2);
 		var String fileName = temp.get(3).substring(0,temp.get(3).length-7);
