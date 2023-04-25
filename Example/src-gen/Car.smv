@@ -1,0 +1,88 @@
+MODULE main
+----------------Specification Definition-------------------
+SPEC AG ((state = autonomy & mode = economic) -> AF state != accelerate)--[7, 1]
+SPEC AG ((state = autonomy & mode = economic) -> AF state != autonomy)--[7, 2]
+SPEC AG ((state = autonomy & mode = economic) -> AF state = autonomy)--[7, 3]
+SPEC EF state=parking  
+SPEC EF state=start  
+SPEC EF state=autonomy  
+SPEC EF state=accelerate  
+SPEC EF state=ignition 
+----------------Specification Definition-------------------
+VAR state:{parking , start , autonomy , accelerate , ignition };
+VAR mode:{ economic  ,  sportive  };
+IVAR action:{Acc, Ac, DeAC, Stop, Start, Manual, PowerOff, Auto, PowerUp};
+VAR doorIsOpen: boolean;
+VAR stop: boolean;
+VAR accSpeed: 0..10;
+VAR displaySpeed: boolean;
+VAR speed: 0..100;
+INIT (state =  parking)
+  TRANS(next(state) = 
+    case 
+	state = parking  &  action = PowerUp:  ignition;--[1, 1]
+	state = ignition  &  action = Start:  start;--[1, 2]
+	state = start  &  action = Acc  &  accSpeed=10:  accelerate;--[1, 3]
+	state = accelerate  &  action = Auto  &  accSpeed=10:  autonomy;--[1, 4]
+	state = autonomy  &  action = Manual  &  accSpeed=10:  accelerate;--[1, 5]
+	state = start  &  action = Acc  &  accSpeed=5:  accelerate;--[1, 6]
+	state = accelerate  &  action = Stop  &  accSpeed=10:  start;--[1, 7]
+	state = accelerate  &  action = Stop  &  accSpeed=5:  parking;--[1, 8]
+	state = start  &  action = Stop  &  accSpeed=10:  ignition;--[1, 9]
+	state = start  &  action = Stop  &  accSpeed=5:  parking;--[1, 10]
+	state = ignition  &  action = PowerOff:  parking;--[1, 11]
+    	TRUE : state;
+    esac)
+
+  	ASSIGN
+  	  init(doorIsOpen):= FALSE;--[3, 1]
+  	  next(doorIsOpen):=
+  	    case
+    	    	state = parking:TRUE;--[3, 3]
+    	    	state != parking:FALSE;--[3, 2]
+  	        TRUE: doorIsOpen;
+  	    esac;
+  	ASSIGN
+  	  init(stop):= FALSE;--[4, 1]
+  	  next(stop):=
+  	    case
+    	    	state = ignition | state = start:FALSE;--[4, 3]
+    	    	action = Stop & state = accelerate:TRUE;--[4, 2]
+  	        TRUE: stop;
+  	    esac;
+  	ASSIGN
+  	  init(accSpeed):= 1;--[2, 2, 1]
+  	  next(accSpeed):=
+  	    case
+    	    	mode = sportive:10;--[2, 2, 4]
+    	    	mode = economic:5;--[2, 2, 3]
+  	        TRUE: accSpeed;
+  	    esac;
+  	ASSIGN
+  	  init(displaySpeed):= FALSE;--[5, 1]
+  	  next(displaySpeed):=
+  	    case
+    	    	accSpeed=10:TRUE;--[5, 4]
+    	    	accSpeed=5 & speed<80:FALSE;--[5, 3]
+    	    	accSpeed=5 & speed>80:TRUE;--[5, 2]
+  	        TRUE: displaySpeed;
+  	    esac;
+  	ASSIGN
+  	  init(speed):= 0;--[2, 1, 1]
+  	  next(speed):=
+  	    case
+    	    	speed>90:100;--[2, 1, 6]
+    	    	action = Stop:0;--[2, 1, 5]
+    	    	state = accelerate & mode = sportive:speed+accSpeed;--[2, 1, 4]
+    	    	state = accelerate & mode = economic:speed+accSpeed;--[2, 1, 3]
+  	        TRUE: speed;
+  	    esac;
+
+	ASSIGN
+	init(mode):= sportive;
+	next(mode):=
+	  case
+		mode = sportive & action = DeAC & speed>40 :  economic;--[6, 1]
+		mode = economic & action = Ac & speed>40 :  sportive;--[6, 2]
+		TRUE:mode;
+	  esac;

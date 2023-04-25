@@ -1,7 +1,6 @@
 [1.1]   when the car is in state parking and it receives PowerUp signal, then it will be in state ignition.
 [1.2]   when the car is in state ignition and it receives Start signal, then it will be in state start. 
-   
-[1.3]   when the car is in state start and it receives Acc signal and its accSpeed is equal to 10 km/h, then it will be in state accelerate.
+[1.3]   when the car is in state start and it receives Acc signal and its accSpeed is equal to 10 km/h, then it will be in state accelerate.    
 [1.4]   when the car is in state accelerate and it receives Auto signal and its accSpeed is equal to 10 m/s2, then it will be in state autonomy.
 [1.5]   when the car is in state autonomy and it receives Manual signal and its accSpeed is equal to 10 m/s2, then it will be in state accelerate.
 [1.6]   when the car is in state start and it receives Acc signal and its accSpeed is equal to 5 m/s2, then it will be in state accelerate.
@@ -10,36 +9,70 @@
 [1.9]   when the car is in state start and it receives Stop signal and its accSpeed is equal to 10 m/s2, then it will be in state ignition.
 [1.10]  when the car is in state start and it receives Stop signal and its accSpeed is equal to 5 m/s2, then it will be in state parking.
 [1.11]  when the car is in state ignition and it receives PowerOff signal, then it will in state parking.
-  
-[2.1.1] The speed should be initialised to 0 km/h.  
-[2.1.2] The speed should be greater or equal to 0 less or equal to 100 km/h.
+                                                                         
+[2.1.1] The speed should be initialised to 0 km/h.            
+[2.1.2] The speed should be greater or equal to 0 and less or equal to 100 km/h.
 [2.1.3] when the car is in state accelerate and it is in mode economic, then its speed is equal to speed added by accSpeed.
 [2.1.4] when the car is in state accelerate and it is in mode sportive, then its speed is equal to speed added by accSpeed.
 [2.1.5] when the car receives Stop signal, then its speed is equal to 0 km/h.
 [2.1.6] when the speed is greater than 90 km/h, then its speed is equal to 100 km/h.
- 
-[2.2.1] The accSpeed should be initialised to 0 m/s2.
-[2.2.2] The accSpeed should be greater or equal to 0 less or equal to 10 m/s2.
+           
+[2.2.1] The accSpeed should be initialised to 1 m/s2.  
+[2.2.2] The accSpeed should be greater or equal to 0 and less or equal to 10 m/s2. 
 [2.2.3] when the car is mode economic, then its accSpeed is equal to 5 m/s2.
-[2.2.4] when the car is mode sportive, then its accSpeed is equal to 10 m/s2.
-
+[2.2.4] when the car is mode sportive, then its accSpeed is equal to 10 m/s2. 
+    
 [3.1]   The doorIsOpen should be initialised to FALSE. 
 [3.2]   when the car is not in state parking, then its doorIsOpen is equal to FALSE.
-[3.3]   when the car is in state parking, then its doorIsOpen is equal to TRUE.
-
-[4.1]   The stop should be initialised to FALSE.
+[3.3]   when the car is in state parking, then its doorIsOpen is equal to TRUE.  
+       
+[4.1]   The stop should be initialised to FALSE.  
 [4.2]   when the car receives Stop signal and it is in state accelerate, then its stop is equal to TRUE.
 [4.3]   when the car is in state ignition or it is in state start, then its stop is equal to FALSE.
-
+ 
 [5.1]   The displaySpeed should be initialised to FALSE.
-[5.2]   when the car is in mode economic and its speed is greater than 80 km/h, then its displaySpeed is equal to TRUE.
-[5.3]   when the car is in mode economic and its speed is less than 80 km/h, then its displaySpeed is equal to FALSE.
-[5.4]   when the car is in mode sportive, then its displaySpeed is equal to TRUE.
-
+[5.2]   when the car accSpeed is equal to 5 m/s2 and its speed is greater than 80 km/h, then its displaySpeed is equal to TRUE.
+[5.3]   when the car accSpeed is equal to 5 m/s2 and its speed is less than 80 km/h, then its displaySpeed is equal to FALSE.
+[5.4]   when the car accSpeed is equal to 10 m/s2, then its displaySpeed is equal to TRUE.
+       
 [6.1]   when the car is in mode sportive and it receives DeAC signal and its speed is greater than 40 km/h, then it is in mode economic.
 [6.2]   when the car is in mode economic and it receives Ac signal and its speed is greater than 40 km/h, then it is in mode sportive.
-
+        
 [7.1]   when all globally the car is state autonomy and it is in mode economic, then all future it is not in state accelerate.
 [7.2]   when all globally the car is state autonomy and it is in mode economic, then all future it is not in state autonomy.
 [7.3]   when all globally the car is state autonomy and it is in mode economic, then all future it is in state autonomy.
-[8.1]   Car should be as comfortable as possible.
+[8.1]   Car should be as comfortable as possible.  
+ 
+   
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+

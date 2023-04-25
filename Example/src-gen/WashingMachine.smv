@@ -1,0 +1,129 @@
+MODULE main
+----------------Specification Definition-------------------
+SPEC AG ((state = hTPrewashing & mode = express) -> AF state = nTWashing)--[7, 1]
+SPEC AG ((state = hTPrewashing & mode = express) -> EF state = nTWashing)--[7, 2]
+SPEC AG ((state = nTWashing & mode = bebeCotton) -> EF state = hTWashing)--[7, 3]
+SPEC AG ((state = nTWashing & mode = bebeCotton) -> EF state = hTPrewashing)--[7, 4]
+SPEC EF state=mSSpinning  
+SPEC EF state=idle  
+SPEC EF state=mTPrewashing  
+SPEC EF state=hTPrewashing  
+SPEC EF state=unlocking  
+SPEC EF state=locking  
+SPEC EF state=nTWashing  
+SPEC EF state=weighting  
+SPEC EF state=hTWashing  
+SPEC EF state=hSSpinning  
+SPEC EF state=filling  
+SPEC EF state=mTWashing  
+SPEC EF state=draining  
+SPEC EF state=spinning  
+SPEC EF state=heating 
+----------------Specification Definition-------------------
+VAR state:{mSSpinning , idle , mTPrewashing , hTPrewashing , unlocking , locking , nTWashing , weighting , hTWashing , hSSpinning , filling , mTWashing , draining , spinning , heating };
+VAR mode:{ jeans  ,  express  ,  wool  ,  bebeCotton  ,  sport  };
+IVAR action:{Fill, Prewash, Stop, Spin, Start, Unlock, Remove, Drain, Free, Put, ActSport, ActJeans, Heat, ActBebeCotton, Wash, ActWool};
+VAR s_index: 0..2000;
+VAR temperature: 0..100;
+VAR preWash: boolean;
+VAR spinningSpeed: 0..2000;
+VAR t_index: 0..100;
+INIT (state =  idle)
+  TRANS(next(state) = 
+    case 
+	state = idle  &  action = Put:  weighting;--[1, 1]
+	state = weighting  &  action = Remove:  weighting;--[1, 2]
+	state = weighting  &  action = Start:  locking;--[1, 3]
+	state = locking  &  action = Fill:  filling;--[1, 4]
+	state = filling  &  action = Heat:  heating;--[1, 5]
+	state = filling  &  action = Wash:  nTWashing;--[1, 6]
+	state = heating  &  action = Heat:  heating;--[1, 7]
+	state = heating  &  action = Prewash  &  temperature=95:  hTPrewashing;--[1, 8]
+	state = heating  &  action = Prewash  &  temperature=40:  mTPrewashing;--[1, 9]
+	state = heating  &  action = Wash  &  temperature=95:  hTWashing;--[1, 10]
+	state = heating  &  action = Wash  &  temperature=40:  mTWashing;--[1, 11]
+	state = hTPrewashing  &  action = Drain  &  preWash=FALSE:  draining;--[1, 12]
+	state = mTPrewashing  &  action = Drain  &  preWash=FALSE:  draining;--[1, 13]
+	state = hTWashing  &  action = Drain:  draining;--[1, 14]
+	state = mTWashing  &  action = Drain:  draining;--[1, 15]
+	state = nTWashing  &  action = Drain:  draining;--[1, 16]
+	state = draining  &  action = Spin:  spinning;--[1, 17]
+	state = draining  &  action = Fill:  filling;--[1, 18]
+	state = spinning  &  action = Spin  &  spinningSpeed=1400:  hSSpinning;--[1, 19]
+	state = spinning  &  action = Wash  &  spinningSpeed=800:  mSSpinning;--[1, 21]
+	state = hSSpinning  &  action = Unlock:  unlocking;--[1, 22]
+	state = mSSpinning  &  action = Unlock:  unlocking;--[1, 23]
+	state = unlocking  &  action = Free:  idle;--[1, 24]
+    	TRUE : state;
+    esac)
+
+  	ASSIGN
+  	  init(s_index):= 0;--[4, 1]
+  	  next(s_index):=
+  	    case
+    	    	mode = bebeCotton | mode = jeans | mode = wool | mode = sport:800;--[4, 4]
+    	    	mode = bebeCotton:1400;--[4, 3]
+  	        TRUE: s_index;
+  	    esac;
+  	ASSIGN
+  	  init(temperature):= 0;--[2, 1, 1]
+  	  next(temperature):=
+  	    case
+    	    	temperature>=100:100;--[2, 1, 3]
+    	    	action = Stop:0;--[2, 1, 5]
+    	    	action = Heat & state = heating:temperature+1;--[2, 1, 4]
+  	        TRUE: temperature;
+  	    esac;
+  	ASSIGN
+  	  init(preWash):= FALSE;--[3, 1]
+  	  next(preWash):=
+  	    case
+    	    	state = hTPrewashing | state = mTPrewashing:FALSE;--[3, 4]
+    	    	mode = express | mode = jeans | mode = wool:FALSE;--[3, 3]
+    	    	mode = bebeCotton | mode = sport:TRUE;--[3, 2]
+  	        TRUE: preWash;
+  	    esac;
+  	ASSIGN
+  	  init(spinningSpeed):= 0;--[5, 1]
+  	  next(spinningSpeed):=
+  	    case
+    	    	spinningSpeed>=1400:1400;--[5, 5]
+    	    	state = unlocking:0;--[5, 4]
+    	    	state = spinning & action = Spin:spinningSpeed+1;--[5, 3]
+  	        TRUE: spinningSpeed;
+  	    esac;
+  	ASSIGN
+  	  init(t_index):= 0;--[2, 2, 1]
+  	  next(t_index):=
+  	    case
+    	    	mode = jeans | mode = wool | mode = sport:40;--[2, 2, 4]
+    	    	mode = bebeCotton | mode = sport:95;--[2, 2, 3]
+  	        TRUE: t_index;
+  	    esac;
+
+	ASSIGN
+	init(mode):= express;
+	next(mode):=
+	  case
+		mode = jeans & action = ActBebeCotton :  bebeCotton;--[6, 7]
+		mode = jeans & action = ActSport :  sport;--[6, 8]
+		mode = sport & action = ActSport :  sport;--[6, 16]
+		mode = wool & action = ActWool :  wool;--[6, 18]
+		mode = bebeCotton & action = ActJeans :  jeans;--[6, 9]
+		mode = sport & action = ActJeans :  jeans;--[6, 13]
+		mode = wool & action = ActBebeCotton :  bebeCotton;--[6, 19]
+		mode = sport & action = ActBebeCotton :  bebeCotton;--[6, 15]
+		mode = express & action = ActSport :  sport;--[6, 4]
+		mode = jeans & action = ActJeans :  jeans;--[6, 5]
+		mode = bebeCotton & action = ActBebeCotton :  bebeCotton;--[6, 11]
+		mode = wool & action = ActSport :  sport;--[6, 20]
+		mode = wool & action = ActJeans :  jeans;--[6, 17]
+		mode = express & action = ActBebeCotton :  bebeCotton;--[6, 3]
+		mode = express & action = ActJeans :  jeans;--[6, 1]
+		mode = express & action = ActWool :  wool;--[6, 2]
+		mode = sport & action = ActWool :  wool;--[6, 14]
+		mode = bebeCotton & action = ActWool :  wool;--[6, 10]
+		mode = bebeCotton & action = ActSport :  sport;--[6, 12]
+		mode = jeans & action = ActWool :  wool;--[6, 6]
+		TRUE:mode;
+	  esac;

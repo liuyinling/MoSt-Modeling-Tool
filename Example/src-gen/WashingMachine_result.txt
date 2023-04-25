@@ -1,0 +1,355 @@
+*** This is NuSMV 2.6.0 (compiled on Wed Oct 14 15:32:58 2015)
+*** Enabled addons are: compass
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@list.fbk.eu>.
+*** Please report bugs to <Please report bugs to <nusmv-users@fbk.eu>>
+
+*** Copyright (c) 2010-2014, Fondazione Bruno Kessler
+
+*** This version of NuSMV is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of NuSMV is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+-- specification AG ((state = hTPrewashing & mode = express) -> AF state = nTWashing)  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    state = idle
+    mode = express
+    s_index = 0
+    temperature = 0
+    preWash = FALSE
+    spinningSpeed = 0
+    t_index = 0
+  -> Input: 1.2 <-
+    action = Put
+  -> State: 1.2 <-
+    state = weighting
+  -> Input: 1.3 <-
+    action = Start
+  -> State: 1.3 <-
+    state = locking
+  -> Input: 1.4 <-
+    action = Fill
+  -> State: 1.4 <-
+    state = filling
+  -> Input: 1.5 <-
+    action = Heat
+  -> State: 1.5 <-
+    state = heating
+  -> Input: 1.6 <-
+  -> State: 1.6 <-
+    temperature = 1
+  -> Input: 1.7 <-
+  -> State: 1.7 <-
+    temperature = 2
+  -> Input: 1.8 <-
+  -> State: 1.8 <-
+    temperature = 3
+  -> Input: 1.9 <-
+  -> State: 1.9 <-
+    temperature = 4
+  -> Input: 1.10 <-
+  -> State: 1.10 <-
+    temperature = 5
+  -> Input: 1.11 <-
+  -> State: 1.11 <-
+    temperature = 6
+  -> Input: 1.12 <-
+  -> State: 1.12 <-
+    temperature = 7
+  -> Input: 1.13 <-
+  -> State: 1.13 <-
+    temperature = 8
+  -> Input: 1.14 <-
+  -> State: 1.14 <-
+    temperature = 9
+  -> Input: 1.15 <-
+  -> State: 1.15 <-
+    temperature = 10
+  -> Input: 1.16 <-
+  -> State: 1.16 <-
+    temperature = 11
+  -> Input: 1.17 <-
+  -> State: 1.17 <-
+    temperature = 12
+  -> Input: 1.18 <-
+  -> State: 1.18 <-
+    temperature = 13
+  -> Input: 1.19 <-
+  -> State: 1.19 <-
+    temperature = 14
+  -> Input: 1.20 <-
+  -> State: 1.20 <-
+    temperature = 15
+  -> Input: 1.21 <-
+  -> State: 1.21 <-
+    temperature = 16
+  -> Input: 1.22 <-
+  -> State: 1.22 <-
+    temperature = 17
+  -> Input: 1.23 <-
+  -> State: 1.23 <-
+    temperature = 18
+  -> Input: 1.24 <-
+  -> State: 1.24 <-
+    temperature = 19
+  -> Input: 1.25 <-
+  -> State: 1.25 <-
+    temperature = 20
+  -> Input: 1.26 <-
+  -> State: 1.26 <-
+    temperature = 21
+  -> Input: 1.27 <-
+  -> State: 1.27 <-
+    temperature = 22
+  -> Input: 1.28 <-
+  -> State: 1.28 <-
+    temperature = 23
+  -> Input: 1.29 <-
+  -> State: 1.29 <-
+    temperature = 24
+  -> Input: 1.30 <-
+  -> State: 1.30 <-
+    temperature = 25
+  -> Input: 1.31 <-
+  -> State: 1.31 <-
+    temperature = 26
+  -> Input: 1.32 <-
+  -> State: 1.32 <-
+    temperature = 27
+  -> Input: 1.33 <-
+  -> State: 1.33 <-
+    temperature = 28
+  -> Input: 1.34 <-
+  -> State: 1.34 <-
+    temperature = 29
+  -> Input: 1.35 <-
+  -> State: 1.35 <-
+    temperature = 30
+  -> Input: 1.36 <-
+  -> State: 1.36 <-
+    temperature = 31
+  -> Input: 1.37 <-
+  -> State: 1.37 <-
+    temperature = 32
+  -> Input: 1.38 <-
+  -> State: 1.38 <-
+    temperature = 33
+  -> Input: 1.39 <-
+  -> State: 1.39 <-
+    temperature = 34
+  -> Input: 1.40 <-
+  -> State: 1.40 <-
+    temperature = 35
+  -> Input: 1.41 <-
+  -> State: 1.41 <-
+    temperature = 36
+  -> Input: 1.42 <-
+  -> State: 1.42 <-
+    temperature = 37
+  -> Input: 1.43 <-
+  -> State: 1.43 <-
+    temperature = 38
+  -> Input: 1.44 <-
+  -> State: 1.44 <-
+    temperature = 39
+  -> Input: 1.45 <-
+  -> State: 1.45 <-
+    temperature = 40
+  -> Input: 1.46 <-
+  -> State: 1.46 <-
+    temperature = 41
+  -> Input: 1.47 <-
+  -> State: 1.47 <-
+    temperature = 42
+  -> Input: 1.48 <-
+  -> State: 1.48 <-
+    temperature = 43
+  -> Input: 1.49 <-
+  -> State: 1.49 <-
+    temperature = 44
+  -> Input: 1.50 <-
+  -> State: 1.50 <-
+    temperature = 45
+  -> Input: 1.51 <-
+  -> State: 1.51 <-
+    temperature = 46
+  -> Input: 1.52 <-
+  -> State: 1.52 <-
+    temperature = 47
+  -> Input: 1.53 <-
+  -> State: 1.53 <-
+    temperature = 48
+  -> Input: 1.54 <-
+  -> State: 1.54 <-
+    temperature = 49
+  -> Input: 1.55 <-
+  -> State: 1.55 <-
+    temperature = 50
+  -> Input: 1.56 <-
+  -> State: 1.56 <-
+    temperature = 51
+  -> Input: 1.57 <-
+  -> State: 1.57 <-
+    temperature = 52
+  -> Input: 1.58 <-
+  -> State: 1.58 <-
+    temperature = 53
+  -> Input: 1.59 <-
+  -> State: 1.59 <-
+    temperature = 54
+  -> Input: 1.60 <-
+  -> State: 1.60 <-
+    temperature = 55
+  -> Input: 1.61 <-
+  -> State: 1.61 <-
+    temperature = 56
+  -> Input: 1.62 <-
+  -> State: 1.62 <-
+    temperature = 57
+  -> Input: 1.63 <-
+  -> State: 1.63 <-
+    temperature = 58
+  -> Input: 1.64 <-
+  -> State: 1.64 <-
+    temperature = 59
+  -> Input: 1.65 <-
+  -> State: 1.65 <-
+    temperature = 60
+  -> Input: 1.66 <-
+  -> State: 1.66 <-
+    temperature = 61
+  -> Input: 1.67 <-
+  -> State: 1.67 <-
+    temperature = 62
+  -> Input: 1.68 <-
+  -> State: 1.68 <-
+    temperature = 63
+  -> Input: 1.69 <-
+  -> State: 1.69 <-
+    temperature = 64
+  -> Input: 1.70 <-
+  -> State: 1.70 <-
+    temperature = 65
+  -> Input: 1.71 <-
+  -> State: 1.71 <-
+    temperature = 66
+  -> Input: 1.72 <-
+  -> State: 1.72 <-
+    temperature = 67
+  -> Input: 1.73 <-
+  -> State: 1.73 <-
+    temperature = 68
+  -> Input: 1.74 <-
+  -> State: 1.74 <-
+    temperature = 69
+  -> Input: 1.75 <-
+  -> State: 1.75 <-
+    temperature = 70
+  -> Input: 1.76 <-
+  -> State: 1.76 <-
+    temperature = 71
+  -> Input: 1.77 <-
+  -> State: 1.77 <-
+    temperature = 72
+  -> Input: 1.78 <-
+  -> State: 1.78 <-
+    temperature = 73
+  -> Input: 1.79 <-
+  -> State: 1.79 <-
+    temperature = 74
+  -> Input: 1.80 <-
+  -> State: 1.80 <-
+    temperature = 75
+  -> Input: 1.81 <-
+  -> State: 1.81 <-
+    temperature = 76
+  -> Input: 1.82 <-
+  -> State: 1.82 <-
+    temperature = 77
+  -> Input: 1.83 <-
+  -> State: 1.83 <-
+    temperature = 78
+  -> Input: 1.84 <-
+  -> State: 1.84 <-
+    temperature = 79
+  -> Input: 1.85 <-
+  -> State: 1.85 <-
+    temperature = 80
+  -> Input: 1.86 <-
+  -> State: 1.86 <-
+    temperature = 81
+  -> Input: 1.87 <-
+  -> State: 1.87 <-
+    temperature = 82
+  -> Input: 1.88 <-
+  -> State: 1.88 <-
+    temperature = 83
+  -> Input: 1.89 <-
+  -> State: 1.89 <-
+    temperature = 84
+  -> Input: 1.90 <-
+  -> State: 1.90 <-
+    temperature = 85
+  -> Input: 1.91 <-
+  -> State: 1.91 <-
+    temperature = 86
+  -> Input: 1.92 <-
+  -> State: 1.92 <-
+    temperature = 87
+  -> Input: 1.93 <-
+  -> State: 1.93 <-
+    temperature = 88
+  -> Input: 1.94 <-
+  -> State: 1.94 <-
+    temperature = 89
+  -> Input: 1.95 <-
+  -> State: 1.95 <-
+    temperature = 90
+  -> Input: 1.96 <-
+  -> State: 1.96 <-
+    temperature = 91
+  -> Input: 1.97 <-
+  -> State: 1.97 <-
+    temperature = 92
+  -> Input: 1.98 <-
+  -> State: 1.98 <-
+    temperature = 93
+  -> Input: 1.99 <-
+  -> State: 1.99 <-
+    temperature = 94
+  -> Input: 1.100 <-
+  -> State: 1.100 <-
+    temperature = 95
+  -> Input: 1.101 <-
+    action = Prewash
+  -- Loop starts here
+  -> State: 1.101 <-
+    state = hTPrewashing
+  -> Input: 1.102 <-
+    action = Spin
+  -> State: 1.102 <-
+-- specification AG ((state = hTPrewashing & mode = express) -> EF state = nTWashing)  is true
+-- specification AG ((state = nTWashing & mode = bebeCotton) -> EF state = hTWashing)  is true
+-- specification AG ((state = nTWashing & mode = bebeCotton) -> EF state = hTPrewashing)  is true
+-- specification EF state = mSSpinning  is true
+-- specification EF state = idle  is true
+-- specification EF state = mTPrewashing  is true
+-- specification EF state = hTPrewashing  is true
+-- specification EF state = unlocking  is true
+-- specification EF state = locking  is true
+-- specification EF state = nTWashing  is true
+-- specification EF state = weighting  is true
+-- specification EF state = hTWashing  is true
+-- specification EF state = hSSpinning  is true
+-- specification EF state = filling  is true
+-- specification EF state = mTWashing  is true
+-- specification EF state = draining  is true
+-- specification EF state = spinning  is true
+-- specification EF state = heating  is true
