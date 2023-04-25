@@ -2234,6 +2234,24 @@ ruleUNIT returns [EObject current=null]
 			$current = $this_WEIGHT_3.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getUNITAccess().getTEMPERATUREParserRuleCall_4());
+		}
+		this_TEMPERATURE_4=ruleTEMPERATURE
+		{
+			$current = $this_TEMPERATURE_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getUNITAccess().getSPINNINGSPEEDParserRuleCall_5());
+		}
+		this_SPINNINGSPEED_5=ruleSPINNINGSPEED
+		{
+			$current = $this_SPINNINGSPEED_5.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -2356,6 +2374,68 @@ ruleSPEED returns [EObject current=null]
 					$current = createModelElement(grammarAccess.getSPEEDRule());
 				}
 				setWithLastConsumed($current, "speed", lv_speed_0_0, "km/h");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleTEMPERATURE
+entryRuleTEMPERATURE returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getTEMPERATURERule()); }
+	iv_ruleTEMPERATURE=ruleTEMPERATURE
+	{ $current=$iv_ruleTEMPERATURE.current; }
+	EOF;
+
+// Rule TEMPERATURE
+ruleTEMPERATURE returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_temperature_0_0='\u00B0C'
+			{
+				newLeafNode(lv_temperature_0_0, grammarAccess.getTEMPERATUREAccess().getTemperatureCKeyword_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getTEMPERATURERule());
+				}
+				setWithLastConsumed($current, "temperature", lv_temperature_0_0, "\u00B0C");
+			}
+		)
+	)
+;
+
+// Entry rule entryRuleSPINNINGSPEED
+entryRuleSPINNINGSPEED returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSPINNINGSPEEDRule()); }
+	iv_ruleSPINNINGSPEED=ruleSPINNINGSPEED
+	{ $current=$iv_ruleSPINNINGSPEED.current; }
+	EOF;
+
+// Rule SPINNINGSPEED
+ruleSPINNINGSPEED returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			lv_spinningspeed_0_0='r/m'
+			{
+				newLeafNode(lv_spinningspeed_0_0, grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedRMKeyword_0());
+			}
+			{
+				if ($current==null) {
+					$current = createModelElement(grammarAccess.getSPINNINGSPEEDRule());
+				}
+				setWithLastConsumed($current, "spinningspeed", lv_spinningspeed_0_0, "r/m");
 			}
 		)
 	)

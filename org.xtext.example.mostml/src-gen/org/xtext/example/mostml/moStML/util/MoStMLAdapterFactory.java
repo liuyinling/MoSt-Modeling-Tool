@@ -216,6 +216,16 @@ public class MoStMLAdapterFactory extends AdapterFactoryImpl
         return createSPEEDAdapter();
       }
       @Override
+      public Adapter caseTEMPERATURE(TEMPERATURE object)
+      {
+        return createTEMPERATUREAdapter();
+      }
+      @Override
+      public Adapter caseSPINNINGSPEED(SPINNINGSPEED object)
+      {
+        return createSPINNINGSPEEDAdapter();
+      }
+      @Override
       public Adapter caseATTRIBUTEVALUE(ATTRIBUTEVALUE object)
       {
         return createATTRIBUTEVALUEAdapter();
@@ -758,6 +768,36 @@ public class MoStMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSPEEDAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mostml.moStML.TEMPERATURE <em>TEMPERATURE</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mostml.moStML.TEMPERATURE
+   * @generated
+   */
+  public Adapter createTEMPERATUREAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mostml.moStML.SPINNINGSPEED <em>SPINNINGSPEED</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mostml.moStML.SPINNINGSPEED
+   * @generated
+   */
+  public Adapter createSPINNINGSPEEDAdapter()
   {
     return null;
   }

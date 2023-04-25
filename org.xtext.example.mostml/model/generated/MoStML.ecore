@@ -139,6 +139,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="SPEED" eSuperTypes="#//UNIT">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="speed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TEMPERATURE" eSuperTypes="#//UNIT">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="temperature" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SPINNINGSPEED" eSuperTypes="#//UNIT">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="spinningspeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ATTRIBUTEVALUE"/>
   <eClassifiers xsi:type="ecore:EClass" name="STRINGTYPE" eSuperTypes="#//ATTRIBUTEVALUE">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="string" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

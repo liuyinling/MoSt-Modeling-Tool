@@ -149,6 +149,8 @@ public class MoStMLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getWEIGHTAccess().getWeightAssignment(), "rule__WEIGHT__WeightAssignment");
 			builder.put(grammarAccess.getTIMEAccess().getTimeAssignment(), "rule__TIME__TimeAssignment");
 			builder.put(grammarAccess.getSPEEDAccess().getSpeedAssignment(), "rule__SPEED__SpeedAssignment");
+			builder.put(grammarAccess.getTEMPERATUREAccess().getTemperatureAssignment(), "rule__TEMPERATURE__TemperatureAssignment");
+			builder.put(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedAssignment(), "rule__SPINNINGSPEED__SpinningspeedAssignment");
 			builder.put(grammarAccess.getSTRINGTYPEAccess().getStringAssignment(), "rule__STRINGTYPE__StringAssignment");
 			builder.put(grammarAccess.getINTTYPEAccess().getIntAssignment(), "rule__INTTYPE__IntAssignment");
 			builder.put(grammarAccess.getBOOLEANTYPEAccess().getValueAssignment(), "rule__BOOLEANTYPE__ValueAssignment");

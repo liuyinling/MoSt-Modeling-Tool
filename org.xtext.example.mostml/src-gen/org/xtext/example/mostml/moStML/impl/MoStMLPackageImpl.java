@@ -229,6 +229,20 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass temperatureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass spinningspeedEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass attributevalueEClass = null;
 
   /**
@@ -1298,6 +1312,50 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
    * @generated
    */
   @Override
+  public EClass getTEMPERATURE()
+  {
+    return temperatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTEMPERATURE_Temperature()
+  {
+    return (EAttribute)temperatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSPINNINGSPEED()
+  {
+    return spinningspeedEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSPINNINGSPEED_Spinningspeed()
+  {
+    return (EAttribute)spinningspeedEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getATTRIBUTEVALUE()
   {
     return attributevalueEClass;
@@ -1924,6 +1982,12 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     speedEClass = createEClass(SPEED);
     createEAttribute(speedEClass, SPEED__SPEED);
 
+    temperatureEClass = createEClass(TEMPERATURE);
+    createEAttribute(temperatureEClass, TEMPERATURE__TEMPERATURE);
+
+    spinningspeedEClass = createEClass(SPINNINGSPEED);
+    createEAttribute(spinningspeedEClass, SPINNINGSPEED__SPINNINGSPEED);
+
     attributevalueEClass = createEClass(ATTRIBUTEVALUE);
 
     stringtypeEClass = createEClass(STRINGTYPE);
@@ -2037,6 +2101,8 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
     weightEClass.getESuperTypes().add(this.getUNIT());
     timeEClass.getESuperTypes().add(this.getUNIT());
     speedEClass.getESuperTypes().add(this.getUNIT());
+    temperatureEClass.getESuperTypes().add(this.getUNIT());
+    spinningspeedEClass.getESuperTypes().add(this.getUNIT());
     stringtypeEClass.getESuperTypes().add(this.getATTRIBUTEVALUE());
     inttypeEClass.getESuperTypes().add(this.getATTRIBUTEVALUE());
     booleantypeEClass.getESuperTypes().add(this.getATTRIBUTEVALUE());
@@ -2159,6 +2225,12 @@ public class MoStMLPackageImpl extends EPackageImpl implements MoStMLPackage
 
     initEClass(speedEClass, org.xtext.example.mostml.moStML.SPEED.class, "SPEED", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSPEED_Speed(), ecorePackage.getEString(), "speed", null, 0, 1, org.xtext.example.mostml.moStML.SPEED.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(temperatureEClass, org.xtext.example.mostml.moStML.TEMPERATURE.class, "TEMPERATURE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTEMPERATURE_Temperature(), ecorePackage.getEString(), "temperature", null, 0, 1, org.xtext.example.mostml.moStML.TEMPERATURE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(spinningspeedEClass, org.xtext.example.mostml.moStML.SPINNINGSPEED.class, "SPINNINGSPEED", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSPINNINGSPEED_Spinningspeed(), ecorePackage.getEString(), "spinningspeed", null, 0, 1, org.xtext.example.mostml.moStML.SPINNINGSPEED.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributevalueEClass, org.xtext.example.mostml.moStML.ATTRIBUTEVALUE.class, "ATTRIBUTEVALUE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

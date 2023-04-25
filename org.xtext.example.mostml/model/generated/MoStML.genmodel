@@ -108,6 +108,12 @@
     <genClasses ecoreClass="MoStML.ecore#//SPEED">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//SPEED/speed"/>
     </genClasses>
+    <genClasses ecoreClass="MoStML.ecore#//TEMPERATURE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//TEMPERATURE/temperature"/>
+    </genClasses>
+    <genClasses ecoreClass="MoStML.ecore#//SPINNINGSPEED">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//SPINNINGSPEED/spinningspeed"/>
+    </genClasses>
     <genClasses ecoreClass="MoStML.ecore#//ATTRIBUTEVALUE"/>
     <genClasses ecoreClass="MoStML.ecore#//STRINGTYPE">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MoStML.ecore#//STRINGTYPE/string"/>

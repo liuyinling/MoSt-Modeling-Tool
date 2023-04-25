@@ -276,6 +276,24 @@ public interface MoStMLFactory extends EFactory
   SPEED createSPEED();
 
   /**
+   * Returns a new object of class '<em>TEMPERATURE</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>TEMPERATURE</em>'.
+   * @generated
+   */
+  TEMPERATURE createTEMPERATURE();
+
+  /**
+   * Returns a new object of class '<em>SPINNINGSPEED</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>SPINNINGSPEED</em>'.
+   * @generated
+   */
+  SPINNINGSPEED createSPINNINGSPEED();
+
+  /**
    * Returns a new object of class '<em>ATTRIBUTEVALUE</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

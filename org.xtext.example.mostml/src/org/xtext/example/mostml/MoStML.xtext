@@ -104,7 +104,7 @@ ATTRIBUTECONTION:
 ;
 
 UNIT:
-	SPEED | ACC | TIME | WEIGHT
+	SPEED | ACC | TIME | WEIGHT | TEMPERATURE | SPINNINGSPEED
 	
 ;
 
@@ -122,6 +122,14 @@ TIME:
 
 SPEED:
 	speed='km/h'	
+;
+
+TEMPERATURE:
+	temperature='°C'	
+;
+
+SPINNINGSPEED:
+	spinningspeed = 'r/m'
 ;
 
 ATTRIBUTEVALUE:

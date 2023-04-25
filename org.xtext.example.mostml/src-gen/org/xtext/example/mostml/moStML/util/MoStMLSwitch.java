@@ -286,6 +286,22 @@ public class MoStMLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MoStMLPackage.TEMPERATURE:
+      {
+        TEMPERATURE temperature = (TEMPERATURE)theEObject;
+        T result = caseTEMPERATURE(temperature);
+        if (result == null) result = caseUNIT(temperature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MoStMLPackage.SPINNINGSPEED:
+      {
+        SPINNINGSPEED spinningspeed = (SPINNINGSPEED)theEObject;
+        T result = caseSPINNINGSPEED(spinningspeed);
+        if (result == null) result = caseUNIT(spinningspeed);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MoStMLPackage.ATTRIBUTEVALUE:
       {
         ATTRIBUTEVALUE attributevalue = (ATTRIBUTEVALUE)theEObject;
@@ -896,6 +912,38 @@ public class MoStMLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSPEED(SPEED object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>TEMPERATURE</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>TEMPERATURE</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTEMPERATURE(TEMPERATURE object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>SPINNINGSPEED</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>SPINNINGSPEED</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSPINNINGSPEED(SPINNINGSPEED object)
   {
     return null;
   }

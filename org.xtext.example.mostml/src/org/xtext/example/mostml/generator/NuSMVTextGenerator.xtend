@@ -14,6 +14,8 @@ import org.xtext.example.mostml.moStML.BOOLEANTYPE
 import org.xtext.example.mostml.moStML.SPEED
 import org.xtext.example.mostml.moStML.TIME
 import org.xtext.example.mostml.moStML.WEIGHT
+import org.xtext.example.mostml.moStML.TEMPERATURE
+import org.xtext.example.mostml.moStML.SPINNINGSPEED
 import org.xtext.example.mostml.moStML.MODECONDITION
 import org.xtext.example.mostml.moStML.STATECONDITON
 import org.xtext.example.mostml.moStML.ATTRIBUTECONTION
@@ -53,6 +55,7 @@ class NuSMVTextGenerator {
 	// Mode Requirement: when the car is in mode sportive, then its accelerateSpeed will be equal to 10 km/h.	
 	var static parameterConstraints = new HashMap<String,String>();
 	var static states = new HashMap<String,String>();
+	var static modes  = new HashMap<String,String>();
 	var static actions = new HashMap<String,String>();
 	var static attributes = new HashMap<String,String>();
 	var static modeTransitions = new HashMap<String,String>();
@@ -77,9 +80,9 @@ class NuSMVTextGenerator {
 	----------------Specification Definition-------------------
 	«var indexAttriStates = 0»
 	«var indexAttriActions = 0»
-	«var indexModeTransitions =0»
+	«var indexAttriModes =0»
 	VAR state:{«FOR state: states.entrySet»«state.key» «IF (indexAttriStates++)<states.entrySet.size-1», «ENDIF»«ENDFOR»};
-	VAR mode:{«FOR modeTransition: modeTransitions.entrySet»«modeTransition.value.split(";").get(0).split(":").get(1)» «IF (indexModeTransitions++)<modeTransitions.entrySet.size-1», «ENDIF»«ENDFOR»};
+	VAR mode:{«FOR mode: modes.entrySet»«mode.key» «IF (indexAttriModes++)<modes.entrySet.size-1», «ENDIF»«ENDFOR»};
 	IVAR action:{«FOR action: actions.entrySet»«action.key»«IF (indexAttriActions++)<(actions.entrySet.size-1)», «ENDIF»«ENDFOR»};
 	«FOR attribute: attributes.entrySet»
 	VAR «attribute.key»: «attribute.value»;
@@ -114,12 +117,19 @@ class NuSMVTextGenerator {
 		next(mode):=
 		  case
 			«FOR modeTransition: modeTransitions.entrySet»
-				«modeTransition.key» & «modeTransition.value»
+				«modeTransition.key» : «modeTransition.value»
 			«ENDFOR»
 			TRUE:mode;
 		  esac;
 		  «ENDIF»
+		  «parameterConstraints.clear»
+		  «states.clear»
+		  «modes.clear»
+		  «actions.clear»
+		  «attributes.clear»
+		  «modeTransitions.clear»
 	'''
+	
 	def static HashMap<String,String> getConstraintRequirements(MoSt root){
 		var String temp="";
 		var String pre;
@@ -162,7 +172,8 @@ class NuSMVTextGenerator {
 				println("mode transition = "+temp);	
 				//modeTransitions.put(temp.split("&").get(0),temp.split("&").get(1)+"--"+modeReq.modeReqID.reqID);	
 				                                          // the subtraction of string
-				modeTransitions.put(temp.split("&").get(0),temp.replaceAll(temp.split("&").get(0),"").trim.substring(1)+"--"+modeReq.modeReqID.reqID);	
+				//modeTransitions.put(temp.split("&").get(0),temp.replaceAll(temp.split("&").get(0),"").trim.substring(1)+"--"+modeReq.modeReqID.reqID);	
+				modeTransitions.put(temp.split(":").get(0),temp.split(":").get(1)+"--"+modeReq.modeReqID.reqID);
 				
 			}
 			temp="";
@@ -170,6 +181,9 @@ class NuSMVTextGenerator {
 		}
 		for(modeTransition:modeTransitions.entrySet){
 			println("$$$$"+modeTransition.key+" value:"+modeTransition.value);
+			if(modeTransition!==null){
+				modes.put(modeTransition.key.split("&").get(0).split("=").get(1),"mode");	
+			}
 			
 		}
 		
@@ -204,12 +218,29 @@ class NuSMVTextGenerator {
 	def static getStates(MoSt root){
 		for(stateReq: root.model.filter(STATE)) {
 			if(stateReq!==null){
+			
 				states.put(stateReq.preStateConditions.get(0).condition.split("=").get(1).trim,"state");
-				states.put(stateReq.postStateCondition.stateName,"state");
+				states.put(stateReq.postStateCondition.stateName.trim,"state");	
+				
+				//get actions from state requirements
+				//We suppose that all the actions appearing in the state requirements.
+				//The next code is just to call the getCondition function to update actions list.
+				var size = stateReq.preStateConditions.size;
+				var count = 1;
+				while(count<size){
+					stateReq.preStateConditions.get(count).condition;
+					count++;
+				}
+				
 			}
 		}
 		
+		for(HashMap.Entry<String, String> entry : states.entrySet()){
+			println("states = "+entry.key);
+		}
+		
 	}
+	
 		
 	def static getRelation(RELATION re){
 		if(re.relaion.trim.equals("and")) " & "
@@ -320,7 +351,12 @@ class NuSMVTextGenerator {
 	def static dispatch getUnit(WEIGHT w){
 		if(w!==null) w.weight
 	}
-	
+	def static dispatch getUnit(TEMPERATURE t){
+		if(t!==null) t.temperature
+	}
+	def static dispatch getUnit(SPINNINGSPEED ss){
+		if(ss!==null) ss.spinningspeed
+	}	
 	def static dispatch getUnit(ACC ac){
 		if(ac!==null) ac.acc
 	}
@@ -346,10 +382,12 @@ class NuSMVTextGenerator {
 			attributeCondition.attributeName+attributeCondition.operator.operator+ attributeCondition.attributeValue.attributeValue		 	
 		 }
 	}	
+	
 	def  dispatch static getCondition(SIGNALCONDITION signalCondition){
 		if(signalCondition!==null){
 			 actions.put(signalCondition.signalName,"action");
 			 "action = "+signalCondition.signalName	
+			 
 		}
 	}
 	def  dispatch static getCondition(ARITHMETICCONDITION arithmeticCondition){

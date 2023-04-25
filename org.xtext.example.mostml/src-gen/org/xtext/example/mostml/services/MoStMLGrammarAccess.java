@@ -1144,13 +1144,15 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		private final RuleCall cACCParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cTIMEParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cWEIGHTParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cTEMPERATUREParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cSPINNINGSPEEDParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//UNIT:
-		//    SPEED | ACC | TIME | WEIGHT
+		//    SPEED | ACC | TIME | WEIGHT | TEMPERATURE | SPINNINGSPEED
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//SPEED | ACC | TIME | WEIGHT
+		//SPEED | ACC | TIME | WEIGHT | TEMPERATURE | SPINNINGSPEED
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//SPEED
@@ -1164,6 +1166,12 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//WEIGHT
 		public RuleCall getWEIGHTParserRuleCall_3() { return cWEIGHTParserRuleCall_3; }
+		
+		//TEMPERATURE
+		public RuleCall getTEMPERATUREParserRuleCall_4() { return cTEMPERATUREParserRuleCall_4; }
+		
+		//SPINNINGSPEED
+		public RuleCall getSPINNINGSPEEDParserRuleCall_5() { return cSPINNINGSPEEDParserRuleCall_5; }
 	}
 	public class ACCElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.ACC");
@@ -1228,6 +1236,38 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		
 		//'km/h'
 		public Keyword getSpeedKmHKeyword_0() { return cSpeedKmHKeyword_0; }
+	}
+	public class TEMPERATUREElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.TEMPERATURE");
+		private final Assignment cTemperatureAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cTemperatureCKeyword_0 = (Keyword)cTemperatureAssignment.eContents().get(0);
+		
+		//TEMPERATURE:
+		//    temperature='°C'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//temperature='°C'
+		public Assignment getTemperatureAssignment() { return cTemperatureAssignment; }
+		
+		//'°C'
+		public Keyword getTemperatureCKeyword_0() { return cTemperatureCKeyword_0; }
+	}
+	public class SPINNINGSPEEDElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.SPINNINGSPEED");
+		private final Assignment cSpinningspeedAssignment = (Assignment)rule.eContents().get(1);
+		private final Keyword cSpinningspeedRMKeyword_0 = (Keyword)cSpinningspeedAssignment.eContents().get(0);
+		
+		//SPINNINGSPEED:
+		//    spinningspeed = 'r/m'
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//spinningspeed = 'r/m'
+		public Assignment getSpinningspeedAssignment() { return cSpinningspeedAssignment; }
+		
+		//'r/m'
+		public Keyword getSpinningspeedRMKeyword_0() { return cSpinningspeedRMKeyword_0; }
 	}
 	public class ATTRIBUTEVALUEElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mostml.MoStML.ATTRIBUTEVALUE");
@@ -1903,6 +1943,8 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	private final WEIGHTElements pWEIGHT;
 	private final TIMEElements pTIME;
 	private final SPEEDElements pSPEED;
+	private final TEMPERATUREElements pTEMPERATURE;
+	private final SPINNINGSPEEDElements pSPINNINGSPEED;
 	private final ATTRIBUTEVALUEElements pATTRIBUTEVALUE;
 	private final STRINGTYPEElements pSTRINGTYPE;
 	private final INTTYPEElements pINTTYPE;
@@ -1962,6 +2004,8 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 		this.pWEIGHT = new WEIGHTElements();
 		this.pTIME = new TIMEElements();
 		this.pSPEED = new SPEEDElements();
+		this.pTEMPERATURE = new TEMPERATUREElements();
+		this.pSPINNINGSPEED = new SPINNINGSPEEDElements();
 		this.pATTRIBUTEVALUE = new ATTRIBUTEVALUEElements();
 		this.pSTRINGTYPE = new STRINGTYPEElements();
 		this.pINTTYPE = new INTTYPEElements();
@@ -2273,7 +2317,7 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	}
 	
 	//UNIT:
-	//    SPEED | ACC | TIME | WEIGHT
+	//    SPEED | ACC | TIME | WEIGHT | TEMPERATURE | SPINNINGSPEED
 	//;
 	public UNITElements getUNITAccess() {
 		return pUNIT;
@@ -2325,6 +2369,28 @@ public class MoStMLGrammarAccess extends AbstractElementFinder.AbstractGrammarEl
 	
 	public ParserRule getSPEEDRule() {
 		return getSPEEDAccess().getRule();
+	}
+	
+	//TEMPERATURE:
+	//    temperature='°C'
+	//;
+	public TEMPERATUREElements getTEMPERATUREAccess() {
+		return pTEMPERATURE;
+	}
+	
+	public ParserRule getTEMPERATURERule() {
+		return getTEMPERATUREAccess().getRule();
+	}
+	
+	//SPINNINGSPEED:
+	//    spinningspeed = 'r/m'
+	//;
+	public SPINNINGSPEEDElements getSPINNINGSPEEDAccess() {
+		return pSPINNINGSPEED;
+	}
+	
+	public ParserRule getSPINNINGSPEEDRule() {
+		return getSPINNINGSPEEDAccess().getRule();
 	}
 	
 	//ATTRIBUTEVALUE:

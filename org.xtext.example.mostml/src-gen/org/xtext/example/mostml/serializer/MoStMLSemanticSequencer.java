@@ -50,10 +50,12 @@ import org.xtext.example.mostml.moStML.RELATION;
 import org.xtext.example.mostml.moStML.ReqID;
 import org.xtext.example.mostml.moStML.SIGNALCONDITION;
 import org.xtext.example.mostml.moStML.SPEED;
+import org.xtext.example.mostml.moStML.SPINNINGSPEED;
 import org.xtext.example.mostml.moStML.STATE;
 import org.xtext.example.mostml.moStML.STATECONDITON;
 import org.xtext.example.mostml.moStML.STRINGTYPE;
 import org.xtext.example.mostml.moStML.SUBTRACTION;
+import org.xtext.example.mostml.moStML.TEMPERATURE;
 import org.xtext.example.mostml.moStML.TIME;
 import org.xtext.example.mostml.moStML.WEIGHT;
 import org.xtext.example.mostml.moStML.X;
@@ -178,6 +180,9 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 			case MoStMLPackage.SPEED:
 				sequence_SPEED(context, (SPEED) semanticObject); 
 				return; 
+			case MoStMLPackage.SPINNINGSPEED:
+				sequence_SPINNINGSPEED(context, (SPINNINGSPEED) semanticObject); 
+				return; 
 			case MoStMLPackage.STATE:
 				sequence_STATE(context, (STATE) semanticObject); 
 				return; 
@@ -189,6 +194,9 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 				return; 
 			case MoStMLPackage.SUBTRACTION:
 				sequence_SUBTRACTION(context, (SUBTRACTION) semanticObject); 
+				return; 
+			case MoStMLPackage.TEMPERATURE:
+				sequence_TEMPERATURE(context, (TEMPERATURE) semanticObject); 
 				return; 
 			case MoStMLPackage.TIME:
 				sequence_TIME(context, (TIME) semanticObject); 
@@ -918,6 +926,27 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     UNIT returns SPINNINGSPEED
+	 *     SPINNINGSPEED returns SPINNINGSPEED
+	 *
+	 * Constraint:
+	 *     spinningspeed='r/m'
+	 * </pre>
+	 */
+	protected void sequence_SPINNINGSPEED(ISerializationContext context, SPINNINGSPEED semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.SPINNINGSPEED__SPINNINGSPEED) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.SPINNINGSPEED__SPINNINGSPEED));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedRMKeyword_0(), semanticObject.getSpinningspeed());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     STATECONDITON returns STATECONDITON
 	 *
 	 * Constraint:
@@ -990,6 +1019,27 @@ public class MoStMLSemanticSequencer extends AbstractDelegatingSemanticSequencer
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getSUBTRACTIONAccess().getSubstractionSubtractedKeyword_0_0(), semanticObject.getSubstraction());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     UNIT returns TEMPERATURE
+	 *     TEMPERATURE returns TEMPERATURE
+	 *
+	 * Constraint:
+	 *     temperature='°C'
+	 * </pre>
+	 */
+	protected void sequence_TEMPERATURE(ISerializationContext context, TEMPERATURE semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MoStMLPackage.Literals.TEMPERATURE__TEMPERATURE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MoStMLPackage.Literals.TEMPERATURE__TEMPERATURE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTEMPERATUREAccess().getTemperatureCKeyword_0(), semanticObject.getTemperature());
 		feeder.finish();
 	}
 	

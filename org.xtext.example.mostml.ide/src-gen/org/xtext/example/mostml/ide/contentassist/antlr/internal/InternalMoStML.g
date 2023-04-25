@@ -749,6 +749,56 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleTEMPERATURE
+entryRuleTEMPERATURE
+:
+{ before(grammarAccess.getTEMPERATURERule()); }
+	 ruleTEMPERATURE
+{ after(grammarAccess.getTEMPERATURERule()); } 
+	 EOF 
+;
+
+// Rule TEMPERATURE
+ruleTEMPERATURE 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getTEMPERATUREAccess().getTemperatureAssignment()); }
+		(rule__TEMPERATURE__TemperatureAssignment)
+		{ after(grammarAccess.getTEMPERATUREAccess().getTemperatureAssignment()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleSPINNINGSPEED
+entryRuleSPINNINGSPEED
+:
+{ before(grammarAccess.getSPINNINGSPEEDRule()); }
+	 ruleSPINNINGSPEED
+{ after(grammarAccess.getSPINNINGSPEEDRule()); } 
+	 EOF 
+;
+
+// Rule SPINNINGSPEED
+ruleSPINNINGSPEED 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedAssignment()); }
+		(rule__SPINNINGSPEED__SpinningspeedAssignment)
+		{ after(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedAssignment()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleATTRIBUTEVALUE
 entryRuleATTRIBUTEVALUE
 :
@@ -1784,6 +1834,18 @@ rule__UNIT__Alternatives
 		{ before(grammarAccess.getUNITAccess().getWEIGHTParserRuleCall_3()); }
 		ruleWEIGHT
 		{ after(grammarAccess.getUNITAccess().getWEIGHTParserRuleCall_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUNITAccess().getTEMPERATUREParserRuleCall_4()); }
+		ruleTEMPERATURE
+		{ after(grammarAccess.getUNITAccess().getTEMPERATUREParserRuleCall_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUNITAccess().getSPINNINGSPEEDParserRuleCall_5()); }
+		ruleSPINNINGSPEED
+		{ after(grammarAccess.getUNITAccess().getSPINNINGSPEEDParserRuleCall_5()); }
 	)
 ;
 finally {
@@ -6686,6 +6748,44 @@ rule__SPEED__SpeedAssignment
 			{ after(grammarAccess.getSPEEDAccess().getSpeedKmHKeyword_0()); }
 		)
 		{ after(grammarAccess.getSPEEDAccess().getSpeedKmHKeyword_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TEMPERATURE__TemperatureAssignment
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTEMPERATUREAccess().getTemperatureCKeyword_0()); }
+		(
+			{ before(grammarAccess.getTEMPERATUREAccess().getTemperatureCKeyword_0()); }
+			'\u00B0C'
+			{ after(grammarAccess.getTEMPERATUREAccess().getTemperatureCKeyword_0()); }
+		)
+		{ after(grammarAccess.getTEMPERATUREAccess().getTemperatureCKeyword_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__SPINNINGSPEED__SpinningspeedAssignment
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedRMKeyword_0()); }
+		(
+			{ before(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedRMKeyword_0()); }
+			'r/m'
+			{ after(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedRMKeyword_0()); }
+		)
+		{ after(grammarAccess.getSPINNINGSPEEDAccess().getSpinningspeedRMKeyword_0()); }
 	)
 ;
 finally {

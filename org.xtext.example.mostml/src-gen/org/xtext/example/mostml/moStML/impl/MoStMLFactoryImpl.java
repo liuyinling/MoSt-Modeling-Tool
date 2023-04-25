@@ -93,6 +93,8 @@ public class MoStMLFactoryImpl extends EFactoryImpl implements MoStMLFactory
       case MoStMLPackage.WEIGHT: return createWEIGHT();
       case MoStMLPackage.TIME: return createTIME();
       case MoStMLPackage.SPEED: return createSPEED();
+      case MoStMLPackage.TEMPERATURE: return createTEMPERATURE();
+      case MoStMLPackage.SPINNINGSPEED: return createSPINNINGSPEED();
       case MoStMLPackage.ATTRIBUTEVALUE: return createATTRIBUTEVALUE();
       case MoStMLPackage.STRINGTYPE: return createSTRINGTYPE();
       case MoStMLPackage.INTTYPE: return createINTTYPE();
@@ -453,6 +455,30 @@ public class MoStMLFactoryImpl extends EFactoryImpl implements MoStMLFactory
   {
     SPEEDImpl speed = new SPEEDImpl();
     return speed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TEMPERATURE createTEMPERATURE()
+  {
+    TEMPERATUREImpl temperature = new TEMPERATUREImpl();
+    return temperature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SPINNINGSPEED createSPINNINGSPEED()
+  {
+    SPINNINGSPEEDImpl spinningspeed = new SPINNINGSPEEDImpl();
+    return spinningspeed;
   }
 
   /**
