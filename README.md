@@ -10,8 +10,8 @@ This tool is used to formalize and verify natural language requirements based on
 If you successfully clone this project, you will see 5 Xtext projects in your Package Explorer. 
 
 ### Running instructions:
-- Go to file NuSMV.java (org.xtext.example.mostml->src->org.xtext.example.mostml.validator) and change `GENERATED_SMV_FILE_PATH`, `NUSMV_EXECUTE_PATH`, and `RESULT_FILE_PATH` to your local paths. Here are the examples:
-1. public String GENERATED_SMV_FILE_PATH = "/Users/liu/runtime-EclipseXtext/Example/src-gen/Car1.smv";
+- Go to file MoStMLValidator.xtend (org.xtext.example.mostml->src->org.xtext.example.mostml.validator) and change `GENERATED_SMV_FILE_PATH`, `NUSMV_EXECUTE_PATH`, and `RESULT_FILE_PATH` to your local paths. Here are the examples:
+1. public String GENERATED_SMV_FILE_PATH = "/Users/liu/runtime-EclipseXtext/Example/src-gen/Car.smv";
 2. public String NUSMV_EXECUTE_PATH =  "/Users/liu/Documents/Logiciel/NuSMV-2.6.0-Darwin/bin/NuSMV";
 3. public String RESULT_FILE_PATH ="/Users/liu/runtime-EclipseXtext/Example/src-gen/result.txt";
 - Go to file MoStML.xtext (org.xtext.example.mostml->src->org.xtext.example.mostml->MoStML.xtext);
@@ -29,3 +29,4 @@ If you successfully clone this project, you will see 5 Xtext projects in your Pa
 - Correct the prompted errors;
 - Save the file, press the space key (if the `.smv` file exists, dynamic checking results will appear), and save the file again.
 - Repeat the last step to use dynamic checks. (sometime, there may be some strange errors, just repeat the mentioned step, errors should go away.)
+- If everything goes well, you are supposed to have the same results as those in fold Example.
