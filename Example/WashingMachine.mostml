@@ -1,3 +1,4 @@
+
 [1.1]   when the machine is in state idle and it receives Put signal, then it will be in state weighting.
 [1.2]   when the machine is in state weighting and it receives Remove signal, then it will be in state weighting. 
 [1.3]   when the machine is in state weighting and it receives Start signal, then it will be in state locking. 
@@ -6,10 +7,10 @@
 [1.6]   when the machine is in state filling and it receives Wash signal, then it will be in state nTWashing.
 [1.7]   when the machine is in state heating and it receives Heat signal, then it will be in state heating.
                              
-[1.8]   when the machine is in state heating and it receives Prewash signal and its temperature is equal to 95, then it will be in state hTPrewashing.
-[1.9]   when the machine is in state heating and it receives Prewash signal and its temperature is equal to 40, then it will be in state mTPrewashing.
-[1.10]  when the machine is in state heating and it receives Wash signal and its temperature is equal to 95, then it will be in state hTWashing.
-[1.11]  when the machine is in state heating and it receives Wash signal and its temperature is equal to 40, then it will be in state mTWashing.
+[1.8]   when the machine is in state heating and it receives Prewash signal and its t_index is equal to 95 °C, then it will be in state hTPrewashing.
+[1.9]   when the machine is in state heating and it receives Prewash signal and its t_index is equal to 40 °C, then it will be in state mTPrewashing.
+[1.10]  when the machine is in state heating and it receives Wash signal and its t_index is equal to 95 °C, then it will be in state hTWashing.
+[1.11]  when the machine is in state heating and it receives Wash signal and its t_index is equal to 40 °C, then it will be in state mTWashing.
                                                   
 [1.12]  when the machine is in state hTPrewashing and it receives Drain signal and its preWash is equal to FALSE, then it will be in state draining.
 [1.13]  when the machine is in state mTPrewashing and it receives Drain signal and its preWash is equal to FALSE, then it will be in state draining.                      
@@ -20,41 +21,45 @@
   
 [1.17]  when the machine is in state draining and it receives Spin signal, then it will be in state spinning.
 [1.18]  when the machine is in state draining and it receives Fill signal, then it will be in state filling.
-[1.19]  when the machine is in state spinning and it receives Spin signal and its spinningSpeed is equal to 1400, then it will be in state hSSpinning.
-[1.21]  when the machine is in state spinning and it receives Wash signal and its spinningSpeed is equal to 800, then it will be in state mSSpinning.                
+[1.19]  when the machine is in state spinning and it receives Spin signal and its s_index is equal to 1400 r/m, then it will be in state hSSpinning.
+[1.21]  when the machine is in state spinning and it receives Wash signal and its s_index is equal to 800 r/m, then it will be in state mSSpinning.                
                        
 [1.22]  when the machine is in state hSSpinning and it receives Unlock signal, then it will be in state unlocking.
 [1.23]  when the machine is in state mSSpinning and it receives Unlock signal, then it will be in state unlocking. 
-     
+       
 [1.24]  when the machine is in state unlocking and it receives Free signal, then it will be in state idle. 
           
 [2.1.1] The temperature should be initialised to 0 °C. 
-[2.1.2] The temperature should be greater or equal to 0 and less or equal to 100 °C.           
-[2.1.4] when the machine receives Heat signal and it is in state heating, then its temperature is equal to temperature added by 1.
+[2.1.2] The temperature should be greater or equal to 0 and less or equal to 100 °C.   
+[2.1.3] when the temperature is greater or equal to 99, then its temperature is equal to 100 °C.        
+[2.1.4] when the machine receives Heat signal and it is in state heating and the temperature is less or equal to 99, then its temperature is equal to temperature added by 1. 
 [2.1.5] when the machine receives Stop signal, then its temperature is equal to 0 °C.
-[2.1.3] when the temperature is greater or equal to 100, then its temperature is equal to 100 °C.
-       
-[2.2.1] The t_index should be initialised to 0 m/s2.  
-[2.2.3] when the machine is mode bebeCotton or it is in mode sport, then its t_index is equal to 95 m/s2.
-[2.2.4] when the machine is mode jeans or it is in mode wool or it is in mode sport, then its t_index is equal to 40 m/s2. 
-[2.2.5] The t_index should be greater or equal to 0 and less or equal to 100 m/s2. 
-
-[3.1]   The preWash should be initialised to FALSE. 
-[3.2]   when the machine is in mode bebeCotton or it is mode sport, then its preWash is equal to TRUE.
+  
+[2.2.1] The t_index should be initialised to 0 °C.               
+[2.2.5] The t_index should be greater or equal to 0 and less or equal to 100 °C.  
+[2.2.3] when the machine is in mode bebeCotton, then its t_index is equal to 95 °C. 
+[2.2.4] when the machine is in mode jeans or it is in mode wool or it is in mode sport, then its t_index is equal to 40 °C. 
+           
+[3.1]   The preWash should be initialised to FALSE.       
+[3.2]   when the machine is in mode bebeCotton or it is mode sport, then its preWash is equal to TRUE.   
 [3.3]   when the machine is in mode express or it is in mode jeans or it is in mode wool, then its preWash is equal to FALSE.  
 [3.4]   when the machine is in state hTPrewashing or it is in state mTPrewashing, then its preWash is equal to FALSE.  
-       
-[4.1]   The s_index should be initialised to 0 m/s2.  
-[4.3]   when the machine is in mode bebeCotton, then its s_index is equal to 1400.
-[4.4]   when the machine is in mode bebeCotton or it is in mode jeans or it is in mode wool or it is in mode sport, then its s_index is equal to 800.
-[4.2]   The s_index should be greater or equal to 0 and less or equal to 2000 m/s2. 
-       
+              
+[4.1]   The s_index should be initialised to 0 r/m.   
+[4.2]   The s_index should be greater or equal to 0 and less or equal to 2000 r/m. 
+[4.3]   when the machine is in mode bebeCotton and its s_index is less or equal to 1399 r/m, then its s_index is equal to s_index added by 1.
+[4.41]  when the machine is in mode bebeCotton and its s_index is less or equal to 799 r/m, then its s_index is equal to s_index added by 1.
+[4.42]  when the machine is in mode jeans and its s_index is less or equal to 799 r/m, then its s_index is equal to s_index added by 1.
+[4.43]  when the machine is in mode wool and its s_index is less or equal to 799 r/m, then its s_index is equal to s_index added by 1.
+[4.44]  when the machine is in mode sport and its s_index is less or equal to 799 r/m, then its s_index is equal to s_index added by 1.
+  
+        
 [5.1]   The spinningSpeed should be initialised to 0 r/m.
-[5.2]   The spinningSpeed should be greater or equal to 0 and less or equal to 2000 r/m.
-[5.3]   when the machine is in state spinning and it receives Spin signal, then its spinningSpeed is equal to spinningSpeed added by 1.
-[5.4]   when the machine is in state unlocking, then its spinningSpeed is equal to 0.
-[5.5]   when the spinningSpeed is greater or equal to 1400 r/m, then its spinningSpeed is equal to 1400 r/m.
-                      
+[5.2]   The spinningSpeed should be greater or equal to 0 and less or equal to 1400 r/m.  
+[5.5]   when the spinningSpeed is greater or equal to 1399 r/m, then its spinningSpeed is equal to 1400 r/m.
+[5.3]   when the machine is in state spinning and it receives Spin signal and the spinningSpeed is less or equal to 1399 r/m, then its spinningSpeed is equal to spinningSpeed added by 1.      
+[5.4]   when the machine is in state unlocking, then its spinningSpeed is equal to 0 r/m.  
+                                       
 [6.1]   when the machine is in mode express and it receives ActJeans signal, then it is in mode jeans.
 [6.2]   when the machine is in mode express and it receives ActWool signal, then it is in mode wool.
 [6.3]   when the machine is in mode express and it receives ActBebeCotton signal, then it is in mode bebeCotton.
@@ -79,7 +84,7 @@
 [6.18]   when the machine is in mode wool and it receives ActWool signal, then it is in mode wool.
 [6.19]   when the machine is in mode wool and it receives ActBebeCotton signal, then it is in mode bebeCotton.
 [6.20]   when the machine is in mode wool and it receives ActSport signal, then it is in mode sport.
-       
+        
 [7.1]   when all globally the machine is state hTPrewashing and it is in mode express, then all future it is in state nTWashing.
 [7.2]   when all globally the machine is state hTPrewashing and it is in mode express, then exist future it is in state nTWashing.
 [7.3]   when all globally the machine is state nTWashing and it is in mode bebeCotton, then exist future it is in state hTWashing.

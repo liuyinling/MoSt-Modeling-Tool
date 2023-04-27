@@ -153,7 +153,7 @@ public class NuSMV{
 			// look for ReqID
 			String[] reqOfProgramError = null;
 			String ID = null;
-			String [] program = new String[100];
+			String [] program = new String[1000];
 			try {
 				counter = 0; //This is an example about requirements: state = accelerate & accSpeed=5:speed/0;--[2, 1, 3]
 				             //The aim is to show how we can get requirement ID [2, 1, 3].
